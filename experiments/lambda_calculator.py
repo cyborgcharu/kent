@@ -2,151 +2,131 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from datetime import datetime, timedelta
-from typing import Dict, List, Tuple
 import glob
+from scipy.stats import entropy
+from typing import Dict, List, Tuple
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-def combine_historical_data():
-    """Combine all historical arxiv paper CSVs"""
-    all_files = sorted(glob.glob("arxiv_papers_201*.csv") + 
-                      glob.glob("arxiv_papers_202*.csv"))
-    
-    dfs = []
-    for filename in all_files:
-        try:
-            df = pd.read_csv(filename)
-            print(f"Loading {filename}: {len(df)} papers")
-            dfs.append(df)
-        except Exception as e:
-            print(f"Error loading {filename}: {e}")
-    
-    return pd.concat(dfs, ignore_index=True)
-
-class LambdaCalculator:
+class EnhancedLambdaCalculator:
     def __init__(self, df):
         self.df = df.copy()
         self.df['date'] = pd.to_datetime(self.df['date'])
         self.df = self.df.sort_values('date')
         
-        # Add KENT framework constants
+        # Framework constants
+        self.d = 100  
         self.critical_thresholds = {
-            'tau_attention': 0.7,  # τa: attention threshold
-            'tau_distinctness': 0.3,  # τd: pattern distinctness threshold
-            'tau_persistence': 0.5   # τp: temporal persistence threshold
+            'tau_attention': 0.7,
+            'tau_distinctness': 0.3,
+            'tau_persistence': 0.5
         }
         
-        # Define topological sector boundaries
         self.sector_thresholds = {
-            'omega1': 2.0,  # λ ≫ 1 threshold
-            'omega2_lower': 0.5,  # λ ≈ 1 lower bound
-            'omega2_upper': 2.0,  # λ ≈ 1 upper bound
+            'omega1': 2.5,
+            'omega2_upper': 2.5,
+            'omega2_lower': 0.4,
+            'omega3': 0.4
         }
+
+    def _calculate_temporal_weights(self, dates) -> np.ndarray:
+        """Calculate temporal weights for gradient calculation"""
+        time_deltas = (dates - dates.min()).dt.total_seconds()
+        # Convert to numpy array before reshaping
+        return np.array(time_deltas / time_deltas.max())
+    
+    def calculate_information_gradient(self, window_papers) -> float:
+        """Enhanced gradient calculation with proper numpy conversion"""
+        if len(window_papers) < 2:
+            return 0
+            
+        try:
+            # Calculate TF-IDF
+            vectorizer = TfidfVectorizer(
+                max_features=self.d,
+                stop_words='english',
+                ngram_range=(1, 2)
+            )
+            tfidf_matrix = vectorizer.fit_transform(window_papers['abstract'])
+            
+            # Calculate temporal weights and convert to correct shape
+            temporal_weights = self._calculate_temporal_weights(window_papers['date'])
+            temporal_weights = temporal_weights.reshape(-1, 1)
+            
+            # Apply weights
+            weighted_tfidf = tfidf_matrix.multiply(temporal_weights)
+            
+            # Calculate term significance
+            term_weights = np.var(tfidf_matrix.toarray(), axis=0)
+            
+            # Calculate gradient
+            gradient_matrix = weighted_tfidf.multiply(term_weights)
+            gradient = np.linalg.norm(gradient_matrix.mean(axis=0))
+            
+            return gradient
+            
+        except Exception as e:
+            print(f"Error in gradient calculation: {str(e)}")
+            return 0
+    
+    def calculate_attention(self, window_papers) -> float:
+        """Enhanced attention calculation"""
+        if len(window_papers) < 2:
+            return 1
+            
+        try:
+            # Category attention
+            category_counts = window_papers['categories'].value_counts()
+            category_probs = category_counts / len(window_papers)
+            category_attention = 1 / (1 + entropy(category_probs))
+            
+            # Temporal attention
+            dates = window_papers['date']
+            time_diffs = np.diff(dates.astype(np.int64) // 10**9)
+            temporal_attention = 1 / (1 + np.std(time_diffs) / (24 * 3600)) if len(time_diffs) > 0 else 1
+            
+            # Term attention
+            vectorizer = TfidfVectorizer(max_features=50)
+            tfidf_matrix = vectorizer.fit_transform(window_papers['abstract'])
+            term_frequencies = np.asarray(tfidf_matrix.sum(axis=0)).flatten()
+            term_attention = 1 / (1 + entropy(term_frequencies + 1e-10))
+            
+            # Combine using geometric mean
+            attention = (category_attention * temporal_attention * term_attention) ** (1/3)
+            
+            return attention
+            
+        except Exception as e:
+            print(f"Error in attention calculation: {str(e)}")
+            return 1
     
     def identify_topological_sector(self, lambda_value: float) -> str:
-        """
-        Identifies which topological sector (Ω1, Ω2, Ω3) the system is in
-        based on λ value, following Section 5.4 of the paper.
-        """
-        if lambda_value > self.sector_thresholds['omega1']:
+        """Identify topological sector"""
+        if lambda_value >= self.sector_thresholds['omega1']:
             return "Ω1 (Information-Dominated)"
-        elif (self.sector_thresholds['omega2_lower'] <= lambda_value <= 
+        elif (self.sector_thresholds['omega2_lower'] <= lambda_value < 
               self.sector_thresholds['omega2_upper']):
             return "Ω2 (Balanced)"
         else:
             return "Ω3 (Attention-Dominated)"
     
-    def calculate_information_gradient(self, window_papers):
-        """
-        Enhanced information gradient calculation incorporating
-        KENT's gradient formulation from Section 5.2
-        """
-        if len(window_papers) < 2:
-            return 0
-            
-        vectorizer = TfidfVectorizer(
-            max_features=100,
-            stop_words='english',
-            ngram_range=(1, 2)
-        )
-        
-        try:
-            # Get unique terms and calculate TFIDF
-            tfidf_matrix = vectorizer.fit_transform(window_papers['abstract'])
-            terms = vectorizer.get_feature_names_out()
-            
-            # Calculate term frequency changes over time
-            term_freqs = np.asarray(tfidf_matrix.sum(axis=0)).flatten()
-            
-            # Enhanced gradient calculation using KENT's formulation
-            gradient = np.linalg.norm(term_freqs) / len(window_papers)
-            
-            return gradient
-            
-        except Exception as e:
-            print(f"Error in gradient calculation: {e}")
-            return 0
-    
-    def calculate_attention(self, window_papers):
-        """
-        Enhanced attention calculation based on KENT's A(Q,K,V) mechanism
-        from Section 5.1
-        """
-        if len(window_papers) < 2:
-            return 1
-            
-        try:
-            # Calculate attention using category distribution
-            category_counts = window_papers['categories'].value_counts()
-            category_probs = category_counts / len(window_papers)
-            
-            # Calculate attention focus using entropy
-            entropy = -np.sum(category_probs * np.log2(category_probs + 1e-10))
-            
-            # Map to attention space using KENT's formulation
-            attention = 1 / (1 + entropy)
-            
-            # Check if this is a focus node per Definition 6.1
-            is_focus_node = (
-                attention > self.critical_thresholds['tau_attention'] and
-                entropy < self.critical_thresholds['tau_distinctness']
-            )
-            
-            return attention
-            
-        except Exception as e:
-            print(f"Error in attention calculation: {e}")
-            return 1
-    
     def detect_phase_transition(self, lambda_series: pd.Series) -> bool:
-        """
-        Detects phase transitions at critical surfaces Σi as defined
-        in Section 5.4 of the paper.
-        """
+        """Detect phase transitions"""
         if len(lambda_series) < 3:
             return False
             
-        # Calculate rate of change
         delta_lambda = lambda_series.diff()
-        
-        # Calculate statistical measures
         mean_change = delta_lambda.mean()
         std_change = delta_lambda.std()
-        
-        # Define transition threshold based on paper's critical surfaces
         threshold = 2 * std_change
         
-        # Check for significant changes indicating phase transition
-        transitions = abs(delta_lambda - mean_change) > threshold
-        
-        return transitions.any()
+        return abs(delta_lambda - mean_change).max() > threshold
     
-    def calculate_lambda(self, window_size=10):
-        """
-        Enhanced λ calculation incorporating KENT's topological sectors
-        """
+    def calculate_lambda(self, window_size=30):
+        """Calculate λ values"""
         results = []
         lambda_values = []
         
-        # Create overlapping windows of papers
         for i in range(0, len(self.df) - window_size + 1, max(1, window_size // 2)):
             window_papers = self.df.iloc[i:i+window_size]
             
@@ -156,10 +136,7 @@ class LambdaCalculator:
             lambda_value = gradient / attention if attention > 0 else 0
             lambda_values.append(lambda_value)
             
-            # Identify topological sector
             sector = self.identify_topological_sector(lambda_value)
-            
-            # Detect phase transitions
             lambda_series = pd.Series(lambda_values[-10:] if len(lambda_values) > 10 else lambda_values)
             is_transition = self.detect_phase_transition(lambda_series)
             
@@ -176,15 +153,28 @@ class LambdaCalculator:
             
         return pd.DataFrame(results)
 
+def combine_historical_data():
+    """Combine historical data"""
+    all_files = sorted(glob.glob("arxiv_papers_2*.csv"))
+    
+    dfs = []
+    for filename in all_files:
+        try:
+            df = pd.read_csv(filename)
+            print(f"Loading {filename}: {len(df)} papers")
+            dfs.append(df)
+        except Exception as e:
+            print(f"Error loading {filename}: {e}")
+    
+    return pd.concat(dfs, ignore_index=True)
+
 if __name__ == "__main__":
     df = combine_historical_data()
     print(f"\nAnalyzing {len(df)} papers from {df['date'].min()} to {df['date'].max()}")
     
-    # Calculate lambda values with enhanced KENT framework
-    calculator = LambdaCalculator(df)
+    calculator = EnhancedLambdaCalculator(df)
     lambda_df = calculator.calculate_lambda(window_size=30)
     
-    # Print detailed information
     print("\nFirst few windows:")
     print(lambda_df[['window_start', 'window_end', 'lambda', 
                     'topological_sector', 'phase_transition']].head().to_string())
@@ -192,49 +182,42 @@ if __name__ == "__main__":
     print("\nSummary Statistics:")
     print(lambda_df['lambda'].describe())
     
-    # Plot results with enhanced visualization
-    import matplotlib.pyplot as plt
-    
+    # Visualization
     plt.figure(figsize=(15, 12))
     
-    # Plot lambda values with sector boundaries
     plt.subplot(4, 1, 1)
-    plt.plot(range(len(lambda_df)), lambda_df['lambda'], marker='o', alpha=0.6)
-    plt.axhline(y=2.0, color='r', linestyle='--', alpha=0.3, label='Ω1 boundary')
-    plt.axhline(y=0.5, color='g', linestyle='--', alpha=0.3, label='Ω2 boundary')
+    plt.plot(pd.to_datetime(lambda_df['window_start']), lambda_df['lambda'], 'b-', alpha=0.6)
+    plt.axhline(y=calculator.sector_thresholds['omega1'], color='r', 
+                linestyle='--', alpha=0.3, label='Ω1 boundary')
+    plt.axhline(y=calculator.sector_thresholds['omega3'], color='g', 
+                linestyle='--', alpha=0.3, label='Ω3 boundary')
     plt.title('λ Over Time with Topological Sectors')
     plt.ylabel('λ Value')
     plt.legend()
     
-    # Plot components
     plt.subplot(4, 1, 2)
-    plt.plot(range(len(lambda_df)), lambda_df['gradient'], marker='o')
+    plt.plot(pd.to_datetime(lambda_df['window_start']), lambda_df['gradient'], 'g-')
     plt.title('Information Gradient (‖∇I‖)')
     plt.ylabel('Gradient')
     
     plt.subplot(4, 1, 3)
-    plt.plot(range(len(lambda_df)), lambda_df['attention'], marker='o')
+    plt.plot(pd.to_datetime(lambda_df['window_start']), lambda_df['attention'], 'r-')
     plt.title('Attention Measure (‖A(Q,K,V)‖)')
     plt.ylabel('Attention')
     
-    # Plot phase transitions
     plt.subplot(4, 1, 4)
-    transitions = lambda_df[lambda_df['phase_transition']].index
-    plt.plot(range(len(lambda_df)), lambda_df['lambda'], 'b-', alpha=0.5)
-    plt.scatter(transitions, lambda_df.loc[transitions, 'lambda'], 
-                color='red', label='Phase Transitions')
-    plt.title('Phase Transitions at Critical Surfaces')
-    plt.ylabel('λ Value')
-    plt.legend()
+    sectors = lambda_df['topological_sector'].value_counts()
+    plt.bar(sectors.index, sectors.values)
+    plt.title('Distribution of Topological Sectors')
+    plt.xticks(rotation=45)
     
     plt.tight_layout()
-    plt.savefig('lambda_analysis_v3.png')
+    plt.savefig('lambda_analysis_enhanced.png')
     
-    # Print phase transition analysis
     transitions_df = lambda_df[lambda_df['phase_transition']]
+    print("\nDetected Phase Transitions:")
     if not transitions_df.empty:
-        print("\nDetected Phase Transitions:")
         print(transitions_df[['window_start', 'window_end', 'lambda', 
                             'topological_sector']].to_string())
     else:
-        print("\nNo clear phase transitions detected in this dataset")
+        print("No clear phase transitions detected in this dataset")

@@ -1,34 +1,32 @@
-# arxiv_collector.py
-
+# historical_collector.py
 import arxiv
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import logging
 from pathlib import Path
 
-# Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('arxiv_collection.log'),
+        logging.FileHandler('arxiv_historical.log'),
         logging.StreamHandler()
     ]
 )
 
-def fetch_papers(start_year=2015, end_year=2024, batch_size=100):
+def fetch_papers_for_period(start_date, end_date, batch_size=100):
     """
-    Fetch ML/AI papers with detailed logging and error handling
+    Fetch papers for a specific time period
     """
-    logging.info(f"Starting paper collection from {start_year} to {end_year}")
-    
     client = arxiv.Client()
     papers = []
     
-    # Build search query
-    query = 'cat:cs.AI OR cat:cs.LG OR cat:cs.NE OR cat:stat.ML'
+    # Build search query with date range
+    query = f'cat:cs.AI OR cat:cs.LG OR cat:cs.NE OR cat:stat.ML AND ' \
+            f'submittedDate:[{start_date.strftime("%Y%m%d")}000000 TO ' \
+            f'{end_date.strftime("%Y%m%d")}235959]'
     
     try:
         search = arxiv.Search(
@@ -37,10 +35,10 @@ def fetch_papers(start_year=2015, end_year=2024, batch_size=100):
             sort_by=arxiv.SortCriterion.SubmittedDate
         )
         
-        logging.info(f"Search query: {query}")
-        logging.info(f"Attempting to fetch {batch_size} papers")
+        logging.info(f"Fetching papers from {start_date} to {end_date}")
+        logging.info(f"Query: {query}")
         
-        for i, paper in enumerate(client.results(search)):
+        for paper in client.results(search):
             try:
                 paper_data = {
                     'id': paper.entry_id,
@@ -48,46 +46,89 @@ def fetch_papers(start_year=2015, end_year=2024, batch_size=100):
                     'abstract': paper.summary,
                     'authors': [author.name for author in paper.authors],
                     'categories': paper.categories,
-                    'date': paper.published,
+                    'date': paper.published
                 }
                 papers.append(paper_data)
                 
-                if i % 10 == 0:  # Log progress every 10 papers
-                    logging.info(f"Processed {i} papers")
+                if len(papers) % 10 == 0:
+                    logging.info(f"Processed {len(papers)} papers")
                 
-                time.sleep(0.33)  # Rate limiting - 3 requests per second
+                time.sleep(0.33)  # Rate limiting
                 
             except Exception as e:
                 logging.error(f"Error processing paper: {e}")
                 continue
+                
+        return pd.DataFrame(papers)
         
-        # Save results periodically
-        df = pd.DataFrame(papers)
-        output_file = f'arxiv_papers_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
-        df.to_csv(output_file, index=False)
-        logging.info(f"Saved {len(papers)} papers to {output_file}")
-        
-        return df
-    
     except Exception as e:
-        logging.error(f"Major error in paper collection: {e}")
-        return pd.DataFrame(papers)  # Return what we have so far
+        logging.error(f"Error in fetch_papers_for_period: {e}")
+        return pd.DataFrame(papers)
+
+def collect_historical_data(start_year=2015, end_year=2024, period_days=30):
+    """
+    Collect papers in chunks, saving periodically
+    """
+    start_date = datetime(start_year, 1, 1)
+    end_date = datetime(end_year, 12, 31)
+    current_date = start_date
+    all_papers = []
+    
+    while current_date < end_date:
+        period_end = min(current_date + timedelta(days=period_days), end_date)
+        
+        # Fetch papers for this period
+        df_period = fetch_papers_for_period(current_date, period_end)
+        
+        if not df_period.empty:
+            # Save this period's data
+            filename = f'arxiv_papers_{current_date.strftime("%Y%m")}.csv'
+            df_period.to_csv(filename, index=False)
+            logging.info(f"Saved {len(df_period)} papers to {filename}")
+            
+            all_papers.append(df_period)
+        
+        # Wait between periods to be nice to ArXiv
+        time.sleep(1)
+        current_date = period_end
+    
+    # Combine all papers
+    if all_papers:
+        df_all = pd.concat(all_papers, ignore_index=True)
+        df_all.to_csv('arxiv_papers_all.csv', index=False)
+        logging.info(f"Saved total of {len(df_all)} papers")
+        return df_all
+    
+    return pd.DataFrame()
+
+def analyze_coverage(df):
+    """
+    Analyze the coverage of our data collection
+    """
+    print("\nData Coverage Analysis:")
+    print("Date range:", df['date'].min(), "to", df['date'].max())
+    print("\nPapers per year:")
+    print(df['date'].dt.year.value_counts().sort_index())
+    print("\nCategories distribution:")
+    print(df['categories'].value_counts().head())
+    
+    # Plot papers over time
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(15, 5))
+    df['date'].dt.year.value_counts().sort_index().plot(kind='bar')
+    plt.title('Papers per Year')
+    plt.xlabel('Year')
+    plt.ylabel('Number of Papers')
+    plt.tight_layout()
+    plt.savefig('papers_per_year.png')
 
 if __name__ == "__main__":
-    logging.info("Starting script")
+    logging.info("Starting historical data collection")
     
-    try:
-        papers = fetch_papers(batch_size=100)  # Start with a small batch for testing
-        logging.info(f"Collection complete. Total papers: {len(papers)}")
-        
-        if not papers.empty:
-            logging.info("\nSample of collected data:")
-            logging.info(papers.head())
-            logging.info("\nColumns:")
-            logging.info(papers.columns.tolist())
-        else:
-            logging.warning("No papers were collected")
-            
-    except Exception as e:
-        logging.error(f"Script failed: {e}")
-        print('hello')
+    # Collect data in chunks
+    df = collect_historical_data(start_year=2015, end_year=2024)
+    
+    if not df.empty:
+        analyze_coverage(df)
+    else:
+        logging.error("No data collected")

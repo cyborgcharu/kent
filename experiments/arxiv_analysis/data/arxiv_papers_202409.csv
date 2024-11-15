@@ -1,0 +1,1622 @@
+id,title,abstract,authors,categories,date
+http://arxiv.org/abs/2410.08417v1,Bilinear MLPs enable weight-based mechanistic interpretability,"A mechanistic understanding of how MLPs do computation in deep neural
+networks remains elusive. Current interpretability work can extract features
+from hidden activations over an input dataset but generally cannot explain how
+MLP weights construct features. One challenge is that element-wise
+nonlinearities introduce higher-order interactions and make it difficult to
+trace computations through the MLP layer. In this paper, we analyze bilinear
+MLPs, a type of Gated Linear Unit (GLU) without any element-wise nonlinearity
+that nevertheless achieves competitive performance. Bilinear MLPs can be fully
+expressed in terms of linear operations using a third-order tensor, allowing
+flexible analysis of the weights. Analyzing the spectra of bilinear MLP weights
+using eigendecomposition reveals interpretable low-rank structure across toy
+tasks, image classification, and language modeling. We use this understanding
+to craft adversarial examples, uncover overfitting, and identify small language
+model circuits directly from the weights alone. Our results demonstrate that
+bilinear layers serve as an interpretable drop-in replacement for current
+activation functions and that weight-based interpretability is viable for
+understanding deep-learning models.","['Michael T. Pearce', 'Thomas Dooms', 'Alice Rigg', 'Jose M. Oramas', 'Lee Sharkey']","['cs.LG', 'stat.ML']",2024-10-10 23:22:11+00:00
+http://arxiv.org/abs/2410.08407v1,What is Left After Distillation? How Knowledge Transfer Impacts Fairness and Bias,"Knowledge Distillation is a commonly used Deep Neural Network compression
+method, which often maintains overall generalization performance. However, we
+show that even for balanced image classification datasets, such as CIFAR-100,
+Tiny ImageNet and ImageNet, as many as 41% of the classes are statistically
+significantly affected by distillation when comparing class-wise accuracy (i.e.
+class bias) between a teacher/distilled student or distilled
+student/non-distilled student model. Changes in class bias are not necessarily
+an undesirable outcome when considered outside of the context of a model's
+usage. Using two common fairness metrics, Demographic Parity Difference (DPD)
+and Equalized Odds Difference (EOD) on models trained with the CelebA,
+Trifeature, and HateXplain datasets, our results suggest that increasing the
+distillation temperature improves the distilled student model's fairness -- for
+DPD, the distilled student even surpasses the fairness of the teacher model at
+high temperatures. This study highlights the uneven effects of Knowledge
+Distillation on certain classes and its potentially significant role in
+fairness, emphasizing that caution is warranted when using distilled models for
+sensitive application domains.","['Aida Mohammadshahi', 'Yani Ioannou']","['cs.LG', 'cs.CY', 'stat.ML']",2024-10-10 22:43:00+00:00
+http://arxiv.org/abs/2410.08395v1,Nesterov acceleration in benignly non-convex landscapes,"While momentum-based optimization algorithms are commonly used in the
+notoriously non-convex optimization problems of deep learning, their analysis
+has historically been restricted to the convex and strongly convex setting. In
+this article, we partially close this gap between theory and practice and
+demonstrate that virtually identical guarantees can be obtained in optimization
+problems with a `benign' non-convexity. We show that these weaker geometric
+assumptions are well justified in overparametrized deep learning, at least
+locally. Variations of this result are obtained for a continuous time model of
+Nesterov's accelerated gradient descent algorithm (NAG), the classical discrete
+time version of NAG, and versions of NAG with stochastic gradient estimates
+with purely additive noise and with noise that exhibits both additive and
+multiplicative scaling.","['Kanan Gupta', 'Stephan Wojtowytsch']","['math.OC', 'cs.LG', 'stat.ML']",2024-10-10 22:02:10+00:00
+http://arxiv.org/abs/2410.08378v1,Deep Generative Quantile Bayes,"We develop a multivariate posterior sampling procedure through deep
+generative quantile learning. Simulation proceeds implicitly through a
+push-forward mapping that can transform i.i.d. random vector samples from the
+posterior. We utilize Monge-Kantorovich depth in multivariate quantiles to
+directly sample from Bayesian credible sets, a unique feature not offered by
+typical posterior sampling methods. To enhance the training of the quantile
+mapping, we design a neural network that automatically performs summary
+statistic extraction. This additional neural network structure has performance
+benefits, including support shrinkage (i.e., contraction of our posterior
+approximation) as the observation sample size increases. We demonstrate the
+usefulness of our approach on several examples where the absence of likelihood
+renders classical MCMC infeasible. Finally, we provide the following
+frequentist theoretical justifications for our quantile learning framework:
+{consistency of the estimated vector quantile, of the recovered posterior
+distribution, and of the corresponding Bayesian credible sets.","['Jungeum Kim', 'Percy S. Zhai', 'Veronika Ročková']","['stat.CO', 'stat.ME', 'stat.ML']",2024-10-10 21:25:15+00:00
+http://arxiv.org/abs/2410.08361v1,Upper Bounds for Learning in Reproducing Kernel Hilbert Spaces for Orbits of an Iterated Function System,"One of the key problems in learning theory is to compute a function $f$ that
+closely approximates the relationship between some input $x$ and corresponding
+output $y$, such that $y\approx f(x)$. This approximation is based on sample
+points $(x_t,y_t)_{t=1}^{m}$, where the function $f$ can be approximated within
+reproducing kernel Hilbert spaces using various learning algorithms. In the
+context of learning theory, it is usually customary to assume that the sample
+points are drawn independently and identically distributed (i.i.d.) from an
+unknown underlying distribution. However, we relax this i.i.d. assumption by
+considering an input sequence $(x_t)_{t\in {\mathbb N}}$ as a trajectory
+generated by an iterated function system, which forms a particular Markov
+chain, with $(y_t)_{t\in {\mathbb N}}$ corresponding to an observation sequence
+when the model is in the corresponding state $x_t$. For such a process, we
+approximate the function $f$ using the Markov chain stochastic gradient
+algorithm and estimate the error by deriving upper bounds within reproducing
+kernel Hilbert spaces.","['Priyanka Roy', 'Susanne Saminger-Platz']","['stat.ML', 'cs.LG', 'math.FA', '68Q32, 62H05, 68T05, 62L20']",2024-10-10 20:34:22+00:00
+http://arxiv.org/abs/2410.08315v1,Avoiding mode collapse in diffusion models fine-tuned with reinforcement learning,"Fine-tuning foundation models via reinforcement learning (RL) has proven
+promising for aligning to downstream objectives. In the case of diffusion
+models (DMs), though RL training improves alignment from early timesteps,
+critical issues such as training instability and mode collapse arise. We
+address these drawbacks by exploiting the hierarchical nature of DMs: we train
+them dynamically at each epoch with a tailored RL method, allowing for
+continual evaluation and step-by-step refinement of the model performance (or
+alignment). Furthermore, we find that not every denoising step needs to be
+fine-tuned to align DMs to downstream tasks. Consequently, in addition to
+clipping, we regularise model parameters at distinct learning phases via a
+sliding-window approach. Our approach, termed Hierarchical Reward Fine-tuning
+(HRF), is validated on the Denoising Diffusion Policy Optimisation method,
+where we show that models trained with HRF achieve better preservation of
+diversity in downstream tasks, thus enhancing the fine-tuning robustness and at
+uncompromising mean rewards.","['Roberto Barceló', 'Cristóbal Alcázar', 'Felipe Tobar']","['stat.ML', 'cs.LG']",2024-10-10 19:06:23+00:00
+http://arxiv.org/abs/2410.08311v1,Correspondence of NNGP Kernel and the Matern Kernel,"Kernels representing limiting cases of neural network architectures have
+recently gained popularity. However, the application and performance of these
+new kernels compared to existing options, such as the Matern kernel, is not
+well studied. We take a practical approach to explore the neural network
+Gaussian process (NNGP) kernel and its application to data in Gaussian process
+regression. We first demonstrate the necessity of normalization to produce
+valid NNGP kernels and explore related numerical challenges. We further
+demonstrate that the predictions from this model are quite inflexible, and
+therefore do not vary much over the valid hyperparameter sets. We then
+demonstrate a surprising result that the predictions given from the NNGP kernel
+correspond closely to those given by the Matern kernel under specific
+circumstances, which suggests a deep similarity between overparameterized deep
+neural networks and the Matern kernel. Finally, we demonstrate the performance
+of the NNGP kernel as compared to the Matern kernel on three benchmark data
+cases, and we conclude that for its flexibility and practical performance, the
+Matern kernel is preferred to the novel NNGP in practical applications.","['Amanda Muyskens', 'Benjamin W. Priest', 'Imene R. Goumiri', 'Michael D. Schneider']","['stat.ML', 'cs.LG']",2024-10-10 19:00:05+00:00
+http://arxiv.org/abs/2410.08309v1,Dynamics of Concept Learning and Compositional Generalization,"Prior work has shown that text-conditioned diffusion models can learn to
+identify and manipulate primitive concepts underlying a compositional
+data-generating process, enabling generalization to entirely novel,
+out-of-distribution compositions. Beyond performance evaluations, these studies
+develop a rich empirical phenomenology of learning dynamics, showing that
+models generalize sequentially, respecting the compositional hierarchy of the
+data-generating process. Moreover, concept-centric structures within the data
+significantly influence a model's speed of learning the ability to manipulate a
+concept. In this paper, we aim to better characterize these empirical results
+from a theoretical standpoint. Specifically, we propose an abstraction of prior
+work's compositional generalization problem by introducing a structured
+identity mapping (SIM) task, where a model is trained to learn the identity
+mapping on a Gaussian mixture with structurally organized centroids. We
+mathematically analyze the learning dynamics of neural networks trained on this
+SIM task and show that, despite its simplicity, SIM's learning dynamics capture
+and help explain key empirical observations on compositional generalization
+with diffusion models identified in prior work. Our theory also offers several
+new insights -- e.g., we find a novel mechanism for non-monotonic learning
+dynamics of test loss in early phases of training. We validate our new
+predictions by training a text-conditioned diffusion model, bridging our
+simplified framework and complex generative models. Overall, this work
+establishes the SIM task as a meaningful theoretical abstraction of concept
+learning dynamics in modern generative models.","['Yongyi Yang', 'Core Francisco Park', 'Ekdeep Singh Lubana', 'Maya Okawa', 'Wei Hu', 'Hidenori Tanaka']","['cs.LG', 'stat.ML']",2024-10-10 18:58:29+00:00
+http://arxiv.org/abs/2410.08292v1,Can Looped Transformers Learn to Implement Multi-step Gradient Descent for In-context Learning?,"The remarkable capability of Transformers to do reasoning and few-shot
+learning, without any fine-tuning, is widely conjectured to stem from their
+ability to implicitly simulate a multi-step algorithms -- such as gradient
+descent -- with their weights in a single forward pass. Recently, there has
+been progress in understanding this complex phenomenon from an expressivity
+point of view, by demonstrating that Transformers can express such multi-step
+algorithms. However, our knowledge about the more fundamental aspect of its
+learnability, beyond single layer models, is very limited. In particular, can
+training Transformers enable convergence to algorithmic solutions? In this work
+we resolve this for in-context linear regression with linear looped
+Transformers -- a multi-layer model with weight sharing that is conjectured to
+have an inductive bias to learn fix-point iterative algorithms. More
+specifically, for this setting we show that the global minimizer of the
+population training loss implements multi-step preconditioned gradient descent,
+with a preconditioner that adapts to the data distribution. Furthermore, we
+show a fast convergence for gradient flow on the regression loss, despite the
+non-convexity of the landscape, by proving a novel gradient dominance
+condition. To our knowledge, this is the first theoretical analysis for
+multi-layer Transformer in this setting. We further validate our theoretical
+findings through synthetic experiments.","['Khashayar Gatmiry', 'Nikunj Saunshi', 'Sashank J. Reddi', 'Stefanie Jegelka', 'Sanjiv Kumar']","['cs.LG', 'cs.AI', 'stat.ML']",2024-10-10 18:29:05+00:00
+http://arxiv.org/abs/2410.08194v1,Features are fate: a theory of transfer learning in high-dimensional regression,"With the emergence of large-scale pre-trained neural networks, methods to
+adapt such ""foundation"" models to data-limited downstream tasks have become a
+necessity. Fine-tuning, preference optimization, and transfer learning have all
+been successfully employed for these purposes when the target task closely
+resembles the source task, but a precise theoretical understanding of ""task
+similarity"" is still lacking. While conventional wisdom suggests that simple
+measures of similarity between source and target distributions, such as
+$\phi$-divergences or integral probability metrics, can directly predict the
+success of transfer, we prove the surprising fact that, in general, this is not
+the case. We adopt, instead, a feature-centric viewpoint on transfer learning
+and establish a number of theoretical results that demonstrate that when the
+target task is well represented by the feature space of the pre-trained model,
+transfer learning outperforms training from scratch. We study deep linear
+networks as a minimal model of transfer learning in which we can analytically
+characterize the transferability phase diagram as a function of the target
+dataset size and the feature space overlap. For this model, we establish
+rigorously that when the feature space overlap between the source and target
+tasks is sufficiently strong, both linear transfer and fine-tuning improve
+performance, especially in the low data limit. These results build on an
+emerging understanding of feature learning dynamics in deep linear networks,
+and we demonstrate numerically that the rigorous results we derive for the
+linear case also apply to nonlinear networks.","['Javan Tahir', 'Surya Ganguli', 'Grant M. Rotskoff']","['stat.ML', 'cs.LG']",2024-10-10 17:58:26+00:00
+http://arxiv.org/abs/2410.08125v1,Generalizing Stochastic Smoothing for Differentiation and Gradient Estimation,"We deal with the problem of gradient estimation for stochastic differentiable
+relaxations of algorithms, operators, simulators, and other non-differentiable
+functions. Stochastic smoothing conventionally perturbs the input of a
+non-differentiable function with a differentiable density distribution with
+full support, smoothing it and enabling gradient estimation. Our theory starts
+at first principles to derive stochastic smoothing with reduced assumptions,
+without requiring a differentiable density nor full support, and we present a
+general framework for relaxation and gradient estimation of non-differentiable
+black-box functions $f:\mathbb{R}^n\to\mathbb{R}^m$. We develop variance
+reduction for gradient estimation from 3 orthogonal perspectives. Empirically,
+we benchmark 6 distributions and up to 24 variance reduction strategies for
+differentiable sorting and ranking, differentiable shortest-paths on graphs,
+differentiable rendering for pose estimation, as well as differentiable cryo-ET
+simulations.","['Felix Petersen', 'Christian Borgelt', 'Aashwin Mishra', 'Stefano Ermon']","['cs.LG', 'stat.ML']",2024-10-10 17:10:00+00:00
+http://arxiv.org/abs/2410.08111v1,Active Fourier Auditor for Estimating Distributional Properties of ML Models,"With the pervasive deployment of Machine Learning (ML) models in real-world
+applications, verifying and auditing properties of ML models have become a
+central concern. In this work, we focus on three properties: robustness,
+individual fairness, and group fairness. We discuss two approaches for auditing
+ML model properties: estimation with and without reconstruction of the target
+model under audit. Though the first approach is studied in the literature, the
+second approach remains unexplored. For this purpose, we develop a new
+framework that quantifies different properties in terms of the Fourier
+coefficients of the ML model under audit but does not parametrically
+reconstruct it. We propose the Active Fourier Auditor (AFA), which queries
+sample points according to the Fourier coefficients of the ML model, and
+further estimates the properties. We derive high probability error bounds on
+AFA's estimates, along with the worst-case lower bounds on the sample
+complexity to audit them. Numerically we demonstrate on multiple datasets and
+models that AFA is more accurate and sample-efficient to estimate the
+properties of interest than the baselines.","['Ayoub Ajarra', 'Bishwamittra Ghosh', 'Debabrota Basu']","['cs.LG', 'cs.AI', 'cs.CY', 'stat.ML']",2024-10-10 16:57:01+00:00
+http://arxiv.org/abs/2410.08087v1,Noether's razor: Learning Conserved Quantities,"Symmetries have proven useful in machine learning models, improving
+generalisation and overall performance. At the same time, recent advancements
+in learning dynamical systems rely on modelling the underlying Hamiltonian to
+guarantee the conservation of energy. These approaches can be connected via a
+seminal result in mathematical physics: Noether's theorem, which states that
+symmetries in a dynamical system correspond to conserved quantities. This work
+uses Noether's theorem to parameterise symmetries as learnable conserved
+quantities. We then allow conserved quantities and associated symmetries to be
+learned directly from train data through approximate Bayesian model selection,
+jointly with the regular training procedure. As training objective, we derive a
+variational lower bound to the marginal likelihood. The objective automatically
+embodies an Occam's Razor effect that avoids collapse of conservation laws to
+the trivial constant, without the need to manually add and tune additional
+regularisers. We demonstrate a proof-of-principle on $n$-harmonic oscillators
+and $n$-body systems. We find that our method correctly identifies the correct
+conserved quantities and U($n$) and SE($n$) symmetry groups, improving overall
+performance and predictive accuracy on test data.","['Tycho F. A. van der Ouderaa', 'Mark van der Wilk', 'Pim de Haan']","['cs.LG', 'stat.ML']",2024-10-10 16:29:49+00:00
+http://arxiv.org/abs/2410.08071v1,Gaussian Process Thompson Sampling via Rootfinding,"Thompson sampling (TS) is a simple, effective stochastic policy in Bayesian
+decision making. It samples the posterior belief about the reward profile and
+optimizes the sample to obtain a candidate decision. In continuous
+optimization, the posterior of the objective function is often a Gaussian
+process (GP), whose sample paths have numerous local optima, making their
+global optimization challenging. In this work, we introduce an efficient global
+optimization strategy for GP-TS that carefully selects starting points for
+gradient-based multi-start optimizers. It identifies all local optima of the
+prior sample via univariate global rootfinding, and optimizes the posterior
+sample using a differentiable, decoupled representation. We demonstrate
+remarkable improvement in the global optimization of GP posterior samples,
+especially in high dimensions. This leads to dramatic improvements in the
+overall performance of Bayesian optimization using GP-TS acquisition functions,
+surprisingly outperforming alternatives like GP-UCB and EI.","['Taiwo A. Adebiyi', 'Bach Do', 'Ruda Zhang']","['cs.LG', 'math.OC', 'stat.ML']",2024-10-10 16:06:45+00:00
+http://arxiv.org/abs/2410.08026v1,Generalization Bounds and Model Complexity for Kolmogorov-Arnold Networks,"Kolmogorov-Arnold Network (KAN) is a network structure recently proposed by
+Liu et al. (2024) that offers improved interpretability and a more parsimonious
+design in many science-oriented tasks compared to multi-layer perceptrons. This
+work provides a rigorous theoretical analysis of KAN by establishing
+generalization bounds for KAN equipped with activation functions that are
+either represented by linear combinations of basis functions or lying in a
+low-rank Reproducing Kernel Hilbert Space (RKHS). In the first case, the
+generalization bound accommodates various choices of basis functions in forming
+the activation functions in each layer of KAN and is adapted to different
+operator norms at each layer. For a particular choice of operator norms, the
+bound scales with the $l_1$ norm of the coefficient matrices and the Lipschitz
+constants for the activation functions, and it has no dependence on
+combinatorial parameters (e.g., number of nodes) outside of logarithmic
+factors. Moreover, our result does not require the boundedness assumption on
+the loss function and, hence, is applicable to a general class of
+regression-type loss functions. In the low-rank case, the generalization bound
+scales polynomially with the underlying ranks as well as the Lipschitz
+constants of the activation functions in each layer. These bounds are
+empirically investigated for KANs trained with stochastic gradient descent on
+simulated and real data sets. The numerical results demonstrate the practical
+relevance of these bounds.","['Xianyang Zhang', 'Huijuan Zhou']","['cs.LG', 'cs.NE', 'stat.ML']",2024-10-10 15:23:21+00:00
+http://arxiv.org/abs/2410.07976v1,Variational Inequality Methods for Multi-Agent Reinforcement Learning: Performance and Stability Gains,"Multi-agent reinforcement learning (MARL) presents unique challenges as
+agents learn strategies through experiences. Gradient-based methods are often
+sensitive to hyperparameter selection and initial random seed variations.
+Concurrently, significant advances have been made in solving Variational
+Inequalities (VIs) which include equilibrium-finding problems particularly in
+addressing the non-converging rotational dynamics that impede convergence of
+traditional gradient based optimization methods. This paper explores the
+potential of leveraging VI-based techniques to improve MARL training.
+Specifically, we study the performance of VI method namely, Nested-Lookahead VI
+(nLA-VI) and Extragradient (EG) in enhancing the multi-agent deep deterministic
+policy gradient (MADDPG) algorithm. We present a VI reformulation of the
+actor-critic algorithm for both single- and multi-agent settings. We introduce
+three algorithms that use nLA-VI, EG, and a combination of both, named
+LA-MADDPG, EG-MADDPG, and LA-EG-MADDPG, respectively. Our empirical results
+demonstrate that these VI-based approaches yield significant performance
+improvements in benchmark environments, such as the zero-sum games:
+rock-paper-scissors and matching pennies, where equilibrium strategies can be
+quantitatively assessed, and the Multi-Agent Particle Environment: Predator
+prey benchmark, where VI-based methods also yield balanced participation of
+agents from the same team.","['Baraah A. M. Sidahmed', 'Tatjana Chavdarova']","['stat.ML', 'cs.LG']",2024-10-10 14:34:14+00:00
+http://arxiv.org/abs/2410.07930v1,Cost-aware Simulation-based Inference,"Simulation-based inference (SBI) is the preferred framework for estimating
+parameters of intractable models in science and engineering. A significant
+challenge in this context is the large computational cost of simulating data
+from complex models, and the fact that this cost often depends on parameter
+values. We therefore propose \textit{cost-aware SBI methods} which can
+significantly reduce the cost of existing sampling-based SBI methods, such as
+neural SBI and approximate Bayesian computation. This is achieved through a
+combination of rejection and self-normalised importance sampling, which
+significantly reduces the number of expensive simulations needed. Our approach
+is studied extensively on models from epidemiology to telecommunications
+engineering, where we obtain significant reductions in the overall cost of
+inference.","['Ayush Bharti', 'Daolang Huang', 'Samuel Kaski', 'François-Xavier Briol']","['stat.ML', 'cs.LG', 'stat.CO']",2024-10-10 13:57:27+00:00
+http://arxiv.org/abs/2410.07890v1,Identifying latent disease factors differently expressed in patient subgroups using group factor analysis,"In this study, we propose a novel approach to uncover subgroup-specific and
+subgroup-common latent factors addressing the challenges posed by the
+heterogeneity of neurological and mental disorders, which hinder disease
+understanding, treatment development, and outcome prediction. The proposed
+approach, sparse Group Factor Analysis (GFA) with regularised horseshoe priors,
+was implemented with probabilistic programming and can uncover associations (or
+latent factors) among multiple data modalities differentially expressed in
+sample subgroups. Synthetic data experiments showed the robustness of our
+sparse GFA by correctly inferring latent factors and model parameters. When
+applied to the Genetic Frontotemporal Dementia Initiative (GENFI) dataset,
+which comprises patients with frontotemporal dementia (FTD) with genetically
+defined subgroups, the sparse GFA identified latent disease factors
+differentially expressed across the subgroups, distinguishing between
+""subgroup-specific"" latent factors within homogeneous groups and ""subgroup
+common"" latent factors shared across subgroups. The latent disease factors
+captured associations between brain structure and non-imaging variables (i.e.,
+questionnaires assessing behaviour and disease severity) across the different
+genetic subgroups, offering insights into disease profiles. Importantly, two
+latent factors were more pronounced in the two more homogeneous FTD patient
+subgroups (progranulin (GRN) and microtubule-associated protein tau (MAPT)
+mutation), showcasing the method's ability to reveal subgroup-specific
+characteristics. These findings underscore the potential of sparse GFA for
+integrating multiple data modalities and identifying interpretable latent
+disease factors that can improve the characterization and stratification of
+patients with neurological and mental health disorders.","['Fabio S. Ferreira', 'John Ashburner', 'Arabella Bouzigues', 'Chatrin Suksasilp', 'Lucy L. Russell', 'Phoebe H. Foster', 'Eve Ferry-Bolder', 'John C. van Swieten', 'Lize C. Jiskoot', 'Harro Seelaar', 'Raquel Sanchez-Valle', 'Robert Laforce', 'Caroline Graff', 'Daniela Galimberti', 'Rik Vandenberghe', 'Alexandre de Mendonca', 'Pietro Tiraboschi', 'Isabel Santana', 'Alexander Gerhard', 'Johannes Levin', 'Sandro Sorbi', 'Markus Otto', 'Florence Pasquier', 'Simon Ducharme', 'Chris R. Butler', 'Isabelle Le Ber', 'Elizabeth Finger', 'Maria C. Tartaglia', 'Mario Masellis', 'James B. Rowe', 'Matthis Synofzik', 'Fermin Moreno', 'Barbara Borroni', 'Samuel Kaski', 'Jonathan D. Rohrer', 'Janaina Mourao-Miranda']","['stat.ML', 'cs.LG']",2024-10-10 13:12:14+00:00
+http://arxiv.org/abs/2410.07799v1,Mind the Gap: a Spectral Analysis of Rank Collapse and Signal Propagation in Transformers,"Attention layers are the core component of transformers, the current
+state-of-the-art neural network architecture. However, \softmaxx-based
+attention puts transformers' trainability at risk. Even \textit{at
+initialisation}, the propagation of signals and gradients through the random
+network can be pathological, resulting in known issues such as (i)
+vanishing/exploding gradients and (ii) \textit{rank collapse}, i.e. when all
+tokens converge to a single representation \textit{with depth}. This paper
+examines signal propagation in \textit{attention-only} transformers from a
+random matrix perspective, illuminating the origin of such issues, as well as
+unveiling a new phenomenon -- (iii) rank collapse \textit{in width}. Modelling
+\softmaxx-based attention at initialisation with Random Markov matrices, our
+theoretical analysis reveals that a \textit{spectral gap} between the two
+largest singular values of the attention matrix causes (iii), which, in turn,
+exacerbates (i) and (ii). Building on this insight, we propose a novel, yet
+simple, practical solution to resolve rank collapse in width by removing the
+spectral gap. Moreover, we validate our findings and discuss the training
+benefits of the proposed fix through experiments that also motivate a revision
+of some of the default parameter scaling. Our attention model accurately
+describes the standard key-query attention in a single-layer transformer,
+making this work a significant first step towards a better understanding of the
+initialisation dynamics in the multi-layer case.","['Alireza Naderi', 'Thiziri Nait Saada', 'Jared Tanner']","['cs.LG', 'stat.ML']",2024-10-10 10:34:18+00:00
+http://arxiv.org/abs/2410.07786v2,Orthogonal Nonnegative Matrix Factorization with the Kullback-Leibler divergence,"Orthogonal nonnegative matrix factorization (ONMF) has become a standard
+approach for clustering. As far as we know, most works on ONMF rely on the
+Frobenius norm to assess the quality of the approximation. This paper presents
+a new model and algorithm for ONMF that minimizes the Kullback-Leibler (KL)
+divergence. As opposed to the Frobenius norm which assumes Gaussian noise, the
+KL divergence is the maximum likelihood estimator for Poisson-distributed data,
+which can model better sparse vectors of word counts in document data sets and
+photo counting processes in imaging. We develop an algorithm based on
+alternating optimization, KL-ONMF, and show that it performs favorably with the
+Frobenius-norm based ONMF for document classification and hyperspectral image
+unmixing.","['Jean Pacifique Nkurunziza', 'Fulgence Nahayo', 'Nicolas Gillis']","['stat.ML', 'cs.IR', 'cs.LG', 'eess.SP']",2024-10-10 10:17:54+00:00
+http://arxiv.org/abs/2410.07778v1,On the grid-sampling limit SDE,"In our recent work [3] we introduced the grid-sampling SDE as a proxy for
+modeling exploration in continuous-time reinforcement learning. In this note,
+we provide further motivation for the use of this SDE and discuss its
+wellposedness in the presence of jumps.","['Christian Bender', 'Nguyen Tran Thuan']","['stat.ML', 'cs.LG', 'math.PR', 'Primary: 60H10, Secondary: 60G57, 93E35']",2024-10-10 10:09:44+00:00
+http://arxiv.org/abs/2410.07746v1,Benign Overfitting in Single-Head Attention,"The phenomenon of benign overfitting, where a trained neural network
+perfectly fits noisy training data but still achieves near-optimal test
+performance, has been extensively studied in recent years for linear models and
+fully-connected/convolutional networks. In this work, we study benign
+overfitting in a single-head softmax attention model, which is the fundamental
+building block of Transformers. We prove that under appropriate conditions, the
+model exhibits benign overfitting in a classification setting already after two
+steps of gradient descent. Moreover, we show conditions where a
+minimum-norm/maximum-margin interpolator exhibits benign overfitting. We study
+how the overfitting behavior depends on the signal-to-noise ratio (SNR) of the
+data distribution, namely, the ratio between norms of signal and noise tokens,
+and prove that a sufficiently large SNR is both necessary and sufficient for
+benign overfitting.","['Roey Magen', 'Shuning Shang', 'Zhiwei Xu', 'Spencer Frei', 'Wei Hu', 'Gal Vardi']","['cs.LG', 'stat.ML']",2024-10-10 09:23:33+00:00
+http://arxiv.org/abs/2410.07696v1,Meta-Learning from Learning Curves for Budget-Limited Algorithm Selection,"Training a large set of machine learning algorithms to convergence in order
+to select the best-performing algorithm for a dataset is computationally
+wasteful. Moreover, in a budget-limited scenario, it is crucial to carefully
+select an algorithm candidate and allocate a budget for training it, ensuring
+that the limited budget is optimally distributed to favor the most promising
+candidates. Casting this problem as a Markov Decision Process, we propose a
+novel framework in which an agent must select in the process of learning the
+most promising algorithm without waiting until it is fully trained. At each
+time step, given an observation of partial learning curves of algorithms, the
+agent must decide whether to allocate resources to further train the most
+promising algorithm (exploitation), to wake up another algorithm previously put
+to sleep, or to start training a new algorithm (exploration). In addition, our
+framework allows the agent to meta-learn from learning curves on past datasets
+along with dataset meta-features and algorithm hyperparameters. By
+incorporating meta-learning, we aim to avoid myopic decisions based solely on
+premature learning curves on the dataset at hand. We introduce two benchmarks
+of learning curves that served in international competitions at WCCI'22 and
+AutoML-conf'22, of which we analyze the results. Our findings show that both
+meta-learning and the progression of learning curves enhance the algorithm
+selection process, as evidenced by methods of winning teams and our DDQN
+baseline, compared to heuristic baselines or a random search. Interestingly,
+our cost-effective baseline, which selects the best-performing algorithm w.r.t.
+a small budget, can perform decently when learning curves do not intersect
+frequently.","['Manh Hung Nguyen', 'Lisheng Sun-Hosoya', 'Isabelle Guyon']","['math.OC', 'cs.LG', 'stat.ML']",2024-10-10 08:09:58+00:00
+http://arxiv.org/abs/2410.07685v1,Breaking the curse of dimensionality in structured density estimation,"We consider the problem of estimating a structured multivariate density,
+subject to Markov conditions implied by an undirected graph. In the worst case,
+without Markovian assumptions, this problem suffers from the curse of
+dimensionality. Our main result shows how the curse of dimensionality can be
+avoided or greatly alleviated under the Markov property, and applies to
+arbitrary graphs. While existing results along these lines focus on sparsity or
+manifold assumptions, we introduce a new graphical quantity called ""graph
+resilience"" and show how it controls the sample complexity. Surprisingly,
+although one might expect the sample complexity of this problem to scale with
+local graph parameters such as the degree, this turns out not to be the case.
+Through explicit examples, we compute uniform deviation bounds and illustrate
+how the curse of dimensionality in density estimation can thus be circumvented.
+Notable examples where the rate improves substantially include sequential,
+hierarchical, and spatial data.","['Robert A. Vandermeulen', 'Wai Ming Tai', 'Bryon Aragam']","['stat.ML', 'cs.CV', 'cs.LG', 'math.ST', 'stat.TH', '62G05, 62G07, 62A09, 62M05, 62M40, 60J10, 60J20', 'G.3; I.5.1']",2024-10-10 07:48:40+00:00
+http://arxiv.org/abs/2410.07651v1,Theoretical limits of descending $\ell_0$ sparse-regression ML algorithms,"We study the theoretical limits of the $\ell_0$ (quasi) norm based
+optimization algorithms when employed for solving classical compressed sensing
+or sparse regression problems. Considering standard contexts with deterministic
+signals and statistical systems, we utilize \emph{Fully lifted random duality
+theory} (Fl RDT) and develop a generic analytical program for studying
+performance of the \emph{maximum-likelihood} (ML) decoding. The key ML
+performance parameter, the residual \emph{root mean square error}
+($\textbf{RMSE}$), is uncovered to exhibit the so-called
+\emph{phase-transition} (PT) phenomenon. The associated aPT curve, which
+separates the regions of systems dimensions where \emph{an} $\ell_0$ based
+algorithm succeeds or fails in achieving small (comparable to the noise) ML
+optimal $\textbf{RMSE}$ is precisely determined as well. In parallel, we
+uncover the existence of another dPT curve which does the same separation but
+for practically feasible \emph{descending} $\ell_0$ ($d\ell_0$) algorithms.
+Concrete implementation and practical relevance of the Fl RDT typically rely on
+the ability to conduct a sizeable set of the underlying numerical evaluations
+which reveal that for the ML decoding the Fl RDT converges astonishingly fast
+with corrections in the estimated quantities not exceeding $\sim 0.1\%$ already
+on the third level of lifting. Analytical results are supplemented by a
+sizeable set of numerical experiments where we implement a simple variant of
+$d\ell_0$ and demonstrate that its practical performance very accurately
+matches the theoretical predictions. Completely surprisingly, a remarkably
+precise agreement between the simulations and the theory is observed for fairly
+small dimensions of the order of 100.",['Mihailo Stojnic'],"['stat.ML', 'cs.IT', 'cs.LG', 'math.IT', 'math.ST', 'stat.TH']",2024-10-10 06:33:41+00:00
+http://arxiv.org/abs/2410.07643v1,Rethinking Adversarial Inverse Reinforcement Learning: From the Angles of Policy Imitation and Transferable Reward Recovery,"In scenarios of inverse reinforcement learning (IRL) with a single expert,
+adversarial inverse reinforcement learning (AIRL) serves as a foundational
+approach to providing comprehensive and transferable task descriptions by
+restricting the reward class, e.g., to state-only rewards. However, AIRL faces
+practical challenges, primarily stemming from the difficulty of verifying the
+unobservable transition matrix - often encountered in practice - under the
+specific conditions necessary for effective transfer. This paper reexamines
+AIRL in light of the unobservable transition matrix or limited informative
+priors. By applying random matrix theory (RMT), we demonstrate that AIRL can
+disentangle rewards for effective transfer with high probability, irrespective
+of specific conditions. This perspective reframes inadequate transfer in
+certain contexts. Specifically, it is attributed to the selection problem of
+the reinforcement learning algorithm employed by AIRL, which is characterized
+by training variance. Based on this insight, we propose a hybrid framework that
+integrates on-policy proximal policy optimization (PPO) in the source
+environment with off-policy soft actor-critic (SAC) in the target environment,
+leading to significant improvements in reward transfer effectiveness.","['Yangchun Zhang', 'Wang Zhou', 'Yirui Zhou']","['stat.ML', 'cs.LG']",2024-10-10 06:21:32+00:00
+http://arxiv.org/abs/2410.07638v1,Almost Minimax Optimal Best Arm Identification in Piecewise Stationary Linear Bandits,"We propose a {\em novel} piecewise stationary linear bandit (PSLB) model,
+where the environment randomly samples a context from an unknown probability
+distribution at each changepoint, and the quality of an arm is measured by its
+return averaged over all contexts. The contexts and their distribution, as well
+as the changepoints are unknown to the agent. We design {\em
+Piecewise-Stationary $\varepsilon$-Best Arm Identification$^+$}
+(PS$\varepsilon$BAI$^+$), an algorithm that is guaranteed to identify an
+$\varepsilon$-optimal arm with probability $\ge 1-\delta$ and with a minimal
+number of samples. PS$\varepsilon$BAI$^+$ consists of two subroutines,
+PS$\varepsilon$BAI and {\sc Na\""ive $\varepsilon$-BAI} (N$\varepsilon$BAI),
+which are executed in parallel. PS$\varepsilon$BAI actively detects
+changepoints and aligns contexts to facilitate the arm identification process.
+When PS$\varepsilon$BAI and N$\varepsilon$BAI are utilized judiciously in
+parallel, PS$\varepsilon$BAI$^+$ is shown to have a finite expected sample
+complexity. By proving a lower bound, we show the expected sample complexity of
+PS$\varepsilon$BAI$^+$ is optimal up to a logarithmic factor. We compare
+PS$\varepsilon$BAI$^+$ to baseline algorithms using numerical experiments which
+demonstrate its efficiency. Both our analytical and numerical results
+corroborate that the efficacy of PS$\varepsilon$BAI$^+$ is due to the delicate
+change detection and context alignment procedures embedded in
+PS$\varepsilon$BAI.","['Yunlong Hou', 'Vincent Y. F. Tan', 'Zixin Zhong']","['cs.LG', 'cs.AI', 'cs.IT', 'math.IT', 'stat.ML']",2024-10-10 06:15:42+00:00
+http://arxiv.org/abs/2410.07627v1,Automatic Curriculum Expert Iteration for Reliable LLM Reasoning,"Hallucinations (i.e., generating plausible but inaccurate content) and
+laziness (i.e. excessive refusals or defaulting to ""I don't know"") persist as
+major challenges in LLM reasoning. Current efforts to reduce hallucinations
+primarily focus on factual errors in knowledge-grounded tasks, often neglecting
+hallucinations related to faulty reasoning. Meanwhile, some approaches render
+LLMs overly conservative, limiting their problem-solving capabilities. To
+mitigate hallucination and laziness in reasoning tasks, we propose Automatic
+Curriculum Expert Iteration (Auto-CEI) to enhance LLM reasoning and align
+responses to the model's capabilities--assertively answering within its limits
+and declining when tasks exceed them. In our method, Expert Iteration explores
+the reasoning trajectories near the LLM policy, guiding incorrect paths back on
+track to reduce compounding errors and improve robustness; it also promotes
+appropriate ""I don't know"" responses after sufficient reasoning attempts. The
+curriculum automatically adjusts rewards, incentivizing extended reasoning
+before acknowledging incapability, thereby pushing the limits of LLM reasoning
+and aligning its behaviour with these limits. We compare Auto-CEI with various
+SOTA baselines across logical reasoning, mathematics, and planning tasks, where
+Auto-CEI achieves superior alignment by effectively balancing assertiveness and
+conservativeness.","['Zirui Zhao', 'Hanze Dong', 'Amrita Saha', 'Caiming Xiong', 'Doyen Sahoo']","['cs.LG', 'cs.AI', 'cs.CL', 'stat.ML']",2024-10-10 05:43:07+00:00
+http://arxiv.org/abs/2410.07616v1,The Plug-in Approach for Average-Reward and Discounted MDPs: Optimal Sample Complexity Analysis,"We study the sample complexity of the plug-in approach for learning
+$\varepsilon$-optimal policies in average-reward Markov decision processes
+(MDPs) with a generative model. The plug-in approach constructs a model
+estimate then computes an average-reward optimal policy in the estimated model.
+Despite representing arguably the simplest algorithm for this problem, the
+plug-in approach has never been theoretically analyzed. Unlike the more
+well-studied discounted MDP reduction method, the plug-in approach requires no
+prior problem information or parameter tuning. Our results fill this gap and
+address the limitations of prior approaches, as we show that the plug-in
+approach is optimal in several well-studied settings without using prior
+knowledge. Specifically it achieves the optimal diameter- and mixing-based
+sample complexities of $\widetilde{O}\left(SA \frac{D}{\varepsilon^2}\right)$
+and $\widetilde{O}\left(SA \frac{\tau_{\mathrm{unif}}}{\varepsilon^2}\right)$,
+respectively, without knowledge of the diameter $D$ or uniform mixing time
+$\tau_{\mathrm{unif}}$. We also obtain span-based bounds for the plug-in
+approach, and complement them with algorithm-specific lower bounds suggesting
+that they are unimprovable. Our results require novel techniques for analyzing
+long-horizon problems which may be broadly useful and which also improve
+results for the discounted plug-in approach, removing effective-horizon-related
+sample size restrictions and obtaining the first optimal complexity bounds for
+the full range of sample sizes without reward perturbation.","['Matthew Zurek', 'Yudong Chen']","['cs.LG', 'cs.IT', 'math.IT', 'math.OC', 'stat.ML']",2024-10-10 05:08:14+00:00
+http://arxiv.org/abs/2410.07574v1,Gap-Dependent Bounds for Q-Learning using Reference-Advantage Decomposition,"We study the gap-dependent bounds of two important algorithms for on-policy
+Q-learning for finite-horizon episodic tabular Markov Decision Processes
+(MDPs): UCB-Advantage (Zhang et al. 2020) and Q-EarlySettled-Advantage (Li et
+al. 2021). UCB-Advantage and Q-EarlySettled-Advantage improve upon the results
+based on Hoeffding-type bonuses and achieve the almost optimal $\sqrt{T}$-type
+regret bound in the worst-case scenario, where $T$ is the total number of
+steps. However, the benign structures of the MDPs such as a strictly positive
+suboptimality gap can significantly improve the regret. While gap-dependent
+regret bounds have been obtained for Q-learning with Hoeffding-type bonuses, it
+remains an open question to establish gap-dependent regret bounds for
+Q-learning using variance estimators in their bonuses and reference-advantage
+decomposition for variance reduction. We develop a novel error decomposition
+framework to prove gap-dependent regret bounds of UCB-Advantage and
+Q-EarlySettled-Advantage that are logarithmic in $T$ and improve upon existing
+ones for Q-learning algorithms. Moreover, we establish the gap-dependent bound
+for the policy switching cost of UCB-Advantage and improve that under the
+worst-case MDPs. To our knowledge, this paper presents the first gap-dependent
+regret analysis for Q-learning using variance estimators and
+reference-advantage decomposition and also provides the first gap-dependent
+analysis on policy switching cost for Q-learning.","['Zhong Zheng', 'Haochen Zhang', 'Lingzhou Xue']","['stat.ML', 'cs.LG']",2024-10-10 03:19:46+00:00
+http://arxiv.org/abs/2410.07550v1,Conditional Lagrangian Wasserstein Flow for Time Series Imputation,"Time series imputation is important for numerous real-world applications. To
+overcome the limitations of diffusion model-based imputation methods, e.g.,
+slow convergence in inference, we propose a novel method for time series
+imputation in this work, called Conditional Lagrangian Wasserstein Flow. The
+proposed method leverages the (conditional) optimal transport theory to learn
+the probability flow in a simulation-free manner, in which the initial noise,
+missing data, and observations are treated as the source distribution, target
+distribution, and conditional information, respectively. According to the
+principle of least action in Lagrangian mechanics, we learn the velocity by
+minimizing the corresponding kinetic energy. Moreover, to incorporate more
+prior information into the model, we parameterize the derivative of a
+task-specific potential function via a variational autoencoder, and combine it
+with the base estimator to formulate a Rao-Blackwellized sampler. The propose
+model allows us to take less intermediate steps to produce high-quality samples
+for inference compared to existing diffusion methods. Finally, the experimental
+results on the real-word datasets show that the proposed method achieves
+competitive performance on time series imputation compared to the
+state-of-the-art methods.","['Weizhu Qian', 'Dalin Zhang', 'Yan Zhao']","['cs.LG', 'stat.ML']",2024-10-10 02:46:28+00:00
+http://arxiv.org/abs/2410.07548v1,Hybrid Summary Statistics,"We present a way to capture high-information posteriors from training sets
+that are sparsely sampled over the parameter space for robust simulation-based
+inference. In physical inference problems, we can often apply domain knowledge
+to define traditional summary statistics to capture some of the information in
+a dataset. We show that augmenting these statistics with neural network outputs
+to maximise the mutual information improves information extraction compared to
+neural summaries alone or their concatenation to existing summaries and makes
+inference robust in settings with low training data. We introduce 1) two loss
+formalisms to achieve this and 2) apply the technique to two different
+cosmological datasets to extract non-Gaussian parameter information.","['T. Lucas Makinen', 'Ce Sui', 'Benjamin D. Wandelt', 'Natalia Porqueres', 'Alan Heavens']","['stat.ML', 'astro-ph.CO', 'cs.IT', 'cs.LG', 'math.IT', 'physics.data-an']",2024-10-10 02:41:23+00:00
+http://arxiv.org/abs/2410.07533v3,Corruption-Robust Linear Bandits: Minimax Optimality and Gap-Dependent Misspecification,"In linear bandits, how can a learner effectively learn when facing corrupted
+rewards? While significant work has explored this question, a holistic
+understanding across different adversarial models and corruption measures is
+lacking, as is a full characterization of the minimax regret bounds. In this
+work, we compare two types of corruptions commonly considered: strong
+corruption, where the corruption level depends on the action chosen by the
+learner, and weak corruption, where the corruption level does not depend on the
+action chosen by the learner. We provide a unified framework to analyze these
+corruptions. For stochastic linear bandits, we fully characterize the gap
+between the minimax regret under strong and weak corruptions. We also initiate
+the study of corrupted adversarial linear bandits, obtaining upper and lower
+bounds with matching dependencies on the corruption level. Next, we reveal a
+connection between corruption-robust learning and learning with gap-dependent
+mis-specification, a setting first studied by Liu et al. (2023a), where the
+misspecification level of an action or policy is proportional to its
+suboptimality. We present a general reduction that enables any
+corruption-robust algorithm to handle gap-dependent misspecification. This
+allows us to recover the results of Liu et al. (2023a) in a black-box manner
+and significantly generalize them to settings like linear MDPs, yielding the
+first results for gap-dependent misspecification in reinforcement learning.
+However, this general reduction does not attain the optimal rate for
+gap-dependent misspecification. Motivated by this, we develop a specialized
+algorithm that achieves optimal bounds for gap-dependent misspecification in
+linear bandits, thus answering an open question posed by Liu et al. (2023a).","['Haolin Liu', 'Artin Tajdini', 'Andrew Wagenmaker', 'Chen-Yu Wei']","['cs.LG', 'stat.ML']",2024-10-10 02:01:46+00:00
+http://arxiv.org/abs/2410.07502v1,Adaptive Batch Size for Privately Finding Second-Order Stationary Points,"There is a gap between finding a first-order stationary point (FOSP) and a
+second-order stationary point (SOSP) under differential privacy constraints,
+and it remains unclear whether privately finding an SOSP is more challenging
+than finding an FOSP. Specifically, Ganesh et al. (2023) demonstrated that an
+$\alpha$-SOSP can be found with
+$\alpha=O(\frac{1}{n^{1/3}}+(\frac{\sqrt{d}}{n\epsilon})^{3/7})$, where $n$ is
+the dataset size, $d$ is the dimension, and $\epsilon$ is the differential
+privacy parameter. Building on the SpiderBoost algorithm framework, we propose
+a new approach that uses adaptive batch sizes and incorporates the binary tree
+mechanism. Our method improves the results for privately finding an SOSP,
+achieving $\alpha=O(\frac{1}{n^{1/3}}+(\frac{\sqrt{d}}{n\epsilon})^{1/2})$.
+This improved bound matches the state-of-the-art for finding an FOSP,
+suggesting that privately finding an SOSP may be achievable at no additional
+cost.","['Daogao Liu', 'Kunal Talwar']","['cs.LG', 'cs.CR', 'cs.DS', 'stat.ML']",2024-10-10 00:34:54+00:00
+http://arxiv.org/abs/2410.07476v2,Unifying and Verifying Mechanistic Interpretations: A Case Study with Group Operations,"A recent line of work in mechanistic interpretability has focused on
+reverse-engineering the computation performed by neural networks trained on the
+binary operation of finite groups. We investigate the internals of
+one-hidden-layer neural networks trained on this task, revealing previously
+unidentified structure and producing a more complete description of such models
+that unifies the explanations of previous works. Notably, these models
+approximate equivariance in each input argument. We verify that our explanation
+applies to a large fraction of networks trained on this task by translating it
+into a compact proof of model performance, a quantitative evaluation of model
+understanding. In particular, our explanation yields a guarantee of model
+accuracy that runs in 30% the time of brute force and gives a >=95% accuracy
+bound for 45% of the models we trained. We were unable to obtain nontrivial
+non-vacuous accuracy bounds using only explanations from previous works.","['Wilson Wu', 'Louis Jaburi', 'Jacob Drori', 'Jason Gross']","['cs.LG', 'stat.ML']",2024-10-09 23:02:00+00:00
+http://arxiv.org/abs/2410.07430v1,EventFlow: Forecasting Continuous-Time Event Data with Flow Matching,"Continuous-time event sequences, in which events occur at irregular
+intervals, are ubiquitous across a wide range of industrial and scientific
+domains. The contemporary modeling paradigm is to treat such data as
+realizations of a temporal point process, and in machine learning it is common
+to model temporal point processes in an autoregressive fashion using a neural
+network. While autoregressive models are successful in predicting the time of a
+single subsequent event, their performance can be unsatisfactory in forecasting
+longer horizons due to cascading errors. We propose EventFlow, a
+non-autoregressive generative model for temporal point processes. Our model
+builds on the flow matching framework in order to directly learn joint
+distributions over event times, side-stepping the autoregressive process.
+EventFlow is likelihood-free, easy to implement and sample from, and either
+matches or surpasses the performance of state-of-the-art models in both
+unconditional and conditional generation tasks on a set of standard benchmarks","['Gavin Kerrigan', 'Kai Nelson', 'Padhraic Smyth']","['cs.LG', 'stat.ML']",2024-10-09 20:57:00+00:00
+http://arxiv.org/abs/2410.07427v2,A Generalization Bound for a Family of Implicit Networks,"Implicit networks are a class of neural networks whose outputs are defined by
+the fixed point of a parameterized operator. They have enjoyed success in many
+applications including natural language processing, image processing, and
+numerous other applications. While they have found abundant empirical success,
+theoretical work on its generalization is still under-explored. In this work,
+we consider a large family of implicit networks defined parameterized
+contractive fixed point operators. We show a generalization bound for this
+class based on a covering number argument for the Rademacher complexity of
+these architectures.","['Samy Wu Fung', 'Benjamin Berkels']","['cs.LG', 'stat.ML', '68T07 68T07 68T07 68T07 68T07 68T07']",2024-10-09 20:44:15+00:00
+http://arxiv.org/abs/2410.07395v1,LLM Embeddings Improve Test-time Adaptation to Tabular $Y|X$-Shifts,"For tabular datasets, the change in the relationship between the label and
+covariates ($Y|X$-shifts) is common due to missing variables (a.k.a.
+confounders). Since it is impossible to generalize to a completely new and
+unknown domain, we study models that are easy to adapt to the target domain
+even with few labeled examples. We focus on building more informative
+representations of tabular data that can mitigate $Y|X$-shifts, and propose to
+leverage the prior world knowledge in LLMs by serializing (write down) the
+tabular data to encode it. We find LLM embeddings alone provide inconsistent
+improvements in robustness, but models trained on them can be well
+adapted/finetuned to the target domain even using 32 labeled observations. Our
+finding is based on a comprehensive and systematic study consisting of 7650
+source-target pairs and benchmark against 261,000 model configurations trained
+by 22 algorithms. Our observation holds when ablating the size of accessible
+target data and different adaptation strategies. The code is available at
+https://github.com/namkoong-lab/LLM-Tabular-Shifts.","['Yibo Zeng', 'Jiashuo Liu', 'Henry Lam', 'Hongseok Namkoong']","['cs.LG', 'cs.AI', 'math.OC', 'stat.ML']",2024-10-09 19:46:30+00:00
+http://arxiv.org/abs/2410.07352v1,Generating Origin-Destination Matrices in Neural Spatial Interaction Models,"Agent-based models (ABMs) are proliferating as decision-making tools across
+policy areas in transportation, economics, and epidemiology. In these models, a
+central object of interest is the discrete origin-destination matrix which
+captures spatial interactions and agent trip counts between locations. Existing
+approaches resort to continuous approximations of this matrix and subsequent
+ad-hoc discretisations in order to perform ABM simulation and calibration. This
+impedes conditioning on partially observed summary statistics, fails to explore
+the multimodal matrix distribution over a discrete combinatorial support, and
+incurs discretisation errors. To address these challenges, we introduce a
+computationally efficient framework that scales linearly with the number of
+origin-destination pairs, operates directly on the discrete combinatorial
+space, and learns the agents' trip intensity through a neural differential
+equation that embeds spatial interactions. Our approach outperforms the prior
+art in terms of reconstruction error and ground truth matrix coverage, at a
+fraction of the computational cost. We demonstrate these benefits in
+large-scale spatial mobility ABMs in Cambridge, UK and Washington, DC, USA.","['Ioannis Zachos', 'Mark Girolami', 'Theodoros Damoulas']","['cs.LG', 'stat.ML']",2024-10-09 18:09:02+00:00
+http://arxiv.org/abs/2410.07170v1,One Initialization to Rule them All: Fine-tuning via Explained Variance Adaptation,"Foundation models (FMs) are pre-trained on large-scale datasets and then
+fine-tuned on a downstream task for a specific application. The most successful
+and most commonly used fine-tuning method is to update the pre-trained weights
+via a low-rank adaptation (LoRA). LoRA introduces new weight matrices that are
+usually initialized at random with a uniform rank distribution across model
+weights. Recent works focus on weight-driven initialization or learning of
+adaptive ranks during training. Both approaches have only been investigated in
+isolation, resulting in slow convergence or a uniform rank distribution, in
+turn leading to sub-optimal performance. We propose to enhance LoRA by
+initializing the new weights in a data-driven manner by computing singular
+value decomposition on minibatches of activation vectors. Then, we initialize
+the LoRA matrices with the obtained right-singular vectors and re-distribute
+ranks among all weight matrices to explain the maximal amount of variance and
+continue the standard LoRA fine-tuning procedure. This results in our new
+method Explained Variance Adaptation (EVA). We apply EVA to a variety of
+fine-tuning tasks ranging from language generation and understanding to image
+classification and reinforcement learning. EVA exhibits faster convergence than
+competitors and attains the highest average score across a multitude of tasks
+per domain.","['Fabian Paischer', 'Lukas Hauzenberger', 'Thomas Schmied', 'Benedikt Alkin', 'Marc Peter Deisenroth', 'Sepp Hochreiter']","['cs.LG', 'cs.AI', 'cs.CL', 'stat.ML']",2024-10-09 17:59:06+00:00
+http://arxiv.org/abs/2410.07091v1,Collusion Detection with Graph Neural Networks,"Collusion is a complex phenomenon in which companies secretly collaborate to
+engage in fraudulent practices. This paper presents an innovative methodology
+for detecting and predicting collusion patterns in different national markets
+using neural networks (NNs) and graph neural networks (GNNs). GNNs are
+particularly well suited to this task because they can exploit the inherent
+network structures present in collusion and many other economic problems. Our
+approach consists of two phases: In Phase I, we develop and train models on
+individual market datasets from Japan, the United States, two regions in
+Switzerland, Italy, and Brazil, focusing on predicting collusion in single
+markets. In Phase II, we extend the models' applicability through zero-shot
+learning, employing a transfer learning approach that can detect collusion in
+markets in which training data is unavailable. This phase also incorporates
+out-of-distribution (OOD) generalization to evaluate the models' performance on
+unseen datasets from other countries and regions. In our empirical study, we
+show that GNNs outperform NNs in detecting complex collusive patterns. This
+research contributes to the ongoing discourse on preventing collusion and
+optimizing detection methodologies, providing valuable guidance on the use of
+NNs and GNNs in economic applications to enhance market fairness and economic
+welfare.","['Lucas Gomes', 'Jannis Kueck', 'Mara Mattes', 'Martin Spindler', 'Alexey Zaytsev']","['econ.EM', 'cs.LG', 'stat.ML']",2024-10-09 17:31:41+00:00
+http://arxiv.org/abs/2410.07021v1,Do Contemporary CATE Models Capture Real-World Heterogeneity? Findings from a Large-Scale Benchmark,"We present unexpected findings from a large-scale benchmark study evaluating
+Conditional Average Treatment Effect (CATE) estimation algorithms. By running
+16 modern CATE models across 43,200 datasets, we find that: (a) 62\% of CATE
+estimates have a higher Mean Squared Error (MSE) than a trivial zero-effect
+predictor, rendering them ineffective; (b) in datasets with at least one useful
+CATE estimate, 80\% still have higher MSE than a constant-effect model; and (c)
+Orthogonality-based models outperform other models only 30\% of the time,
+despite widespread optimism about their performance. These findings expose
+significant limitations in current CATE models and suggest ample opportunities
+for further research.
+  Our findings stem from a novel application of \textit{observational
+sampling}, originally developed to evaluate Average Treatment Effect (ATE)
+estimates from observational methods with experiment data. To adapt
+observational sampling for CATE evaluation, we introduce a statistical
+parameter, $Q$, equal to MSE minus a constant and preserves the ranking of
+models by their MSE. We then derive a family of sample statistics, collectively
+called $\hat{Q}$, that can be computed from real-world data. We prove that
+$\hat{Q}$ is a consistent estimator of $Q$ under mild technical conditions.
+When used in observational sampling, $\hat{Q}$ is unbiased and asymptotically
+selects the model with the smallest MSE. To ensure the benchmark reflects
+real-world heterogeneity, we handpick datasets where outcomes come from field
+rather than simulation. By combining the new observational sampling method, new
+statistics, and real-world datasets, the benchmark provides a unique
+perspective on CATE estimator performance and uncover gaps in capturing
+real-world heterogeneity.","['Haining Yu', 'Yizhou Sun']","['stat.ML', 'cs.LG']",2024-10-09 16:04:40+00:00
+http://arxiv.org/abs/2410.07014v1,Optimizing Estimators of Squared Calibration Errors in Classification,"In this work, we propose a mean-squared error-based risk that enables the
+comparison and optimization of estimators of squared calibration errors in
+practical settings. Improving the calibration of classifiers is crucial for
+enhancing the trustworthiness and interpretability of machine learning models,
+especially in sensitive decision-making scenarios. Although various calibration
+(error) estimators exist in the current literature, there is a lack of guidance
+on selecting the appropriate estimator and tuning its hyperparameters. By
+leveraging the bilinear structure of squared calibration errors, we reformulate
+calibration estimation as a regression problem with independent and identically
+distributed (i.i.d.) input pairs. This reformulation allows us to quantify the
+performance of different estimators even for the most challenging calibration
+criterion, known as canonical calibration. Our approach advocates for a
+training-validation-testing pipeline when estimating a calibration error on an
+evaluation dataset. We demonstrate the effectiveness of our pipeline by
+optimizing existing calibration estimators and comparing them with novel kernel
+ridge regression-based estimators on standard image classification tasks.","['Sebastian G. Gruber', 'Francis Bach']","['cs.LG', 'stat.ML']",2024-10-09 15:58:06+00:00
+http://arxiv.org/abs/2410.06993v1,Efficient Distribution Matching of Representations via Noise-Injected Deep InfoMax,"Deep InfoMax (DIM) is a well-established method for self-supervised
+representation learning (SSRL) based on maximization of the mutual information
+between the input and the output of a deep neural network encoder. Despite the
+DIM and contrastive SSRL in general being well-explored, the task of learning
+representations conforming to a specific distribution (i.e., distribution
+matching, DM) is still under-addressed. Motivated by the importance of DM to
+several downstream tasks (including generative modeling, disentanglement,
+outliers detection and other), we enhance DIM to enable automatic matching of
+learned representations to a selected prior distribution. To achieve this, we
+propose injecting an independent noise into the normalized outputs of the
+encoder, while keeping the same InfoMax training objective. We show that such
+modification allows for learning uniformly and normally distributed
+representations, as well as representations of other absolutely continuous
+distributions. Our approach is tested on various downstream tasks. The results
+indicate a moderate trade-off between the performance on the downstream tasks
+and quality of DM.","['Ivan Butakov', 'Alexander Sememenko', 'Alexander Tolmachev', 'Andrey Gladkov', 'Marina Munkhoeva', 'Alexey Frolov']","['cs.LG', 'cs.IT', 'math.IT', 'stat.ML', '94A16 (Primary) 68T07, 94A17 (Secondary)', 'E.4; H.1.1']",2024-10-09 15:40:04+00:00
+http://arxiv.org/abs/2410.06986v1,Diffusion Density Estimators,"We investigate the use of diffusion models as neural density estimators. The
+current approach to this problem involves converting the generative process to
+a smooth flow, known as the Probability Flow ODE. The log density at a given
+sample can be obtained by solving the ODE with a black-box solver. We introduce
+a new, highly parallelizable method that computes log densities without the
+need to solve a flow. Our approach is based on estimating a path integral by
+Monte Carlo, in a manner identical to the simulation-free training of diffusion
+models. We also study how different training parameters affect the accuracy of
+the density calculation, and offer insights into how these models can be made
+more scalable and efficient.",['Akhil Premkumar'],"['cs.LG', 'stat.ML']",2024-10-09 15:21:53+00:00
+http://arxiv.org/abs/2410.06978v1,Mixing of the No-U-Turn Sampler and the Geometry of Gaussian Concentration,"We prove that the mixing time of the No-U-Turn Sampler (NUTS), when
+initialized in the concentration region of the canonical Gaussian measure,
+scales as $d^{1/4}$, up to logarithmic factors, where $d$ is the dimension.
+This scaling is expected to be sharp. This result is based on a coupling
+argument that leverages the geometric structure of the target distribution.
+Specifically, concentration of measure results in a striking uniformity in
+NUTS' locally adapted transitions, which holds with high probability. This
+uniformity is formalized by interpreting NUTS as an accept/reject Markov chain,
+where the mixing properties for the more uniform accept chain are analytically
+tractable. Additionally, our analysis uncovers a previously unnoticed issue
+with the path length adaptation procedure of NUTS, specifically related to
+looping behavior, which we address in detail.","['Nawaf Bou-Rabee', 'Stefan Oberdörster']","['math.PR', 'stat.ML']",2024-10-09 15:17:01+00:00
+http://arxiv.org/abs/2410.06937v1,A covariance representation and an elementary proof of the Gaussian concentration inequality,"Via a covariance representation based on characteristic functions, a known
+elementary proof of the Gaussian concentration inequality is presented. A few
+other applications are briefly mentioned.",['Christian Houdré'],"['math.PR', 'stat.ML', '60E15, 60G15']",2024-10-09 14:30:55+00:00
+http://arxiv.org/abs/2410.06921v1,Adversarial Vulnerability as a Consequence of On-Manifold Inseparibility,"Recent works have shown theoretically and empirically that redundant data
+dimensions are a source of adversarial vulnerability. However, the inverse
+doesn't seem to hold in practice; employing dimension-reduction techniques
+doesn't exhibit robustness as expected. In this work, we consider
+classification tasks and characterize the data distribution as a
+low-dimensional manifold, with high/low variance features defining the on/off
+manifold direction. We argue that clean training experiences poor convergence
+in the off-manifold direction caused by the ill-conditioning in widely used
+first-order optimizers like gradient descent. The poor convergence then acts as
+a source of adversarial vulnerability when the dataset is inseparable in the
+on-manifold direction. We provide theoretical results for logistic regression
+and a 2-layer linear network on the considered data distribution. Furthermore,
+we advocate using second-order methods that are immune to ill-conditioning and
+lead to better robustness. We perform experiments and exhibit tremendous
+robustness improvements in clean training through long training and the
+employment of second-order methods, corroborating our framework. Additionally,
+we find the inclusion of batch-norm layers hinders such robustness gains. We
+attribute this to differing implicit biases between traditional and
+batch-normalized neural networks.","['Rajdeep Haldar', 'Yue Xing', 'Qifan Song', 'Guang Lin']","['stat.ML', 'cs.LG']",2024-10-09 14:18:52+00:00
+http://arxiv.org/abs/2410.09101v1,Data Taggants: Dataset Ownership Verification via Harmless Targeted Data Poisoning,"Dataset ownership verification, the process of determining if a dataset is
+used in a model's training data, is necessary for detecting unauthorized data
+usage and data contamination. Existing approaches, such as backdoor
+watermarking, rely on inducing a detectable behavior into the trained model on
+a part of the data distribution. However, these approaches have limitations, as
+they can be harmful to the model's performances or require unpractical access
+to the model's internals. Most importantly, previous approaches lack guarantee
+against false positives. This paper introduces data taggants, a novel
+non-backdoor dataset ownership verification technique. Our method uses pairs of
+out-of-distribution samples and random labels as secret keys, and leverages
+clean-label targeted data poisoning to subtly alter a dataset, so that models
+trained on it respond to the key samples with the corresponding key labels. The
+keys are built as to allow for statistical certificates with black-box access
+only to the model. We validate our approach through comprehensive and realistic
+experiments on ImageNet1k using ViT and ResNet models with state-of-the-art
+training recipes. Our findings demonstrate that data taggants can reliably make
+models trained on the protected dataset detectable with high confidence,
+without compromising validation accuracy, and demonstrates superiority over
+backdoor watermarking. Moreover, our method shows to be stealthy and robust
+against various defense mechanisms.","['Wassim Bouaziz', 'El-Mahdi El-Mhamdi', 'Nicolas Usunier']","['cs.CR', 'cs.LG', 'stat.ML']",2024-10-09 12:49:23+00:00
+http://arxiv.org/abs/2410.06800v1,Efficient Weight-Space Laplace-Gaussian Filtering and Smoothing for Sequential Deep Learning,"Efficiently learning a sequence of related tasks, such as in continual
+learning, poses a significant challenge for neural nets due to the delicate
+trade-off between catastrophic forgetting and loss of plasticity. We address
+this challenge with a grounded framework for sequentially learning related
+tasks based on Bayesian inference. Specifically, we treat the model's
+parameters as a nonlinear Gaussian state-space model and perform efficient
+inference using Gaussian filtering and smoothing. This general formalism
+subsumes existing continual learning approaches, while also offering a clearer
+conceptual understanding of its components. Leveraging Laplace approximations
+during filtering, we construct Gaussian posterior measures on the weight space
+of a neural network for each task. We use it as an efficient regularizer by
+exploiting the structure of the generalized Gauss-Newton matrix (GGN) to
+construct diagonal plus low-rank approximations. The dynamics model allows
+targeted control of the learning process and the incorporation of
+domain-specific knowledge, such as modeling the type of shift between tasks.
+Additionally, using Bayesian approximate smoothing can enhance the performance
+of task-specific models without needing to re-access any data.","['Joanna Sliwa', 'Frank Schneider', 'Nathanael Bosch', 'Agustinus Kristiadi', 'Philipp Hennig']","['cs.LG', 'stat.ML']",2024-10-09 11:54:33+00:00
+http://arxiv.org/abs/2410.06731v2,Gridded Transformer Neural Processes for Large Unstructured Spatio-Temporal Data,"Many important problems require modelling large-scale spatio-temporal
+datasets, with one prevalent example being weather forecasting. Recently,
+transformer-based approaches have shown great promise in a range of weather
+forecasting problems. However, these have mostly focused on gridded data
+sources, neglecting the wealth of unstructured, off-the-grid data from
+observational measurements such as those at weather stations. A promising
+family of models suitable for such tasks are neural processes (NPs), notably
+the family of transformer neural processes (TNPs). Although TNPs have shown
+promise on small spatio-temporal datasets, they are unable to scale to the
+quantities of data used by state-of-the-art weather and climate models. This
+limitation stems from their lack of efficient attention mechanisms. We address
+this shortcoming through the introduction of gridded pseudo-token TNPs which
+employ specialised encoders and decoders to handle unstructured observations
+and utilise a processor containing gridded pseudo-tokens that leverage
+efficient attention mechanisms. Our method consistently outperforms a range of
+strong baselines on various synthetic and real-world regression tasks involving
+large-scale data, while maintaining competitive computational efficiency. The
+real-life experiments are performed on weather data, demonstrating the
+potential of our approach to bring performance and computational benefits when
+applied at scale in a weather modelling pipeline.","['Matthew Ashman', 'Cristiana Diaconu', 'Eric Langezaal', 'Adrian Weller', 'Richard E. Turner']","['stat.ML', 'cs.LG']",2024-10-09 10:00:56+00:00
+http://arxiv.org/abs/2410.06726v2,Bounds and Sensitivity Analysis of the Causal Effect Under Outcome-Independent MNAR Confounding,"We report assumption-free bounds for any contrast between the probabilities
+of the potential outcome under exposure and non-exposure when the confounders
+are missing not at random. We assume that the missingness mechanism is
+outcome-independent. We also report a sensitivity analysis method to complement
+our bounds.",['Jose M. Peña'],"['stat.ME', 'cs.LG', 'stat.ML']",2024-10-09 09:50:06+00:00
+http://arxiv.org/abs/2410.06568v1,Statistical Arbitrage in Rank Space,"Equity market dynamics are conventionally investigated in name space where
+stocks are indexed by company names. In contrast, by indexing stocks based on
+their ranks in capitalization, we gain a different perspective of market
+dynamics in rank space. Here, we demonstrate the superior performance of
+statistical arbitrage in rank space over name space, driven by a robust market
+representation and enhanced mean-reverting properties of residual returns in
+rank space. Our statistical arbitrage algorithm features an intraday
+rebalancing mechanism for effective conversion between portfolios in name and
+rank space. We explore statistical arbitrage with and without neural networks
+in both name and rank space and show that the portfolios obtained in rank space
+with neural networks significantly outperform those in name space.","['Y. -F. Li', 'G. Papanicolaou']","['q-fin.MF', 'stat.ML']",2024-10-09 06:05:11+00:00
+http://arxiv.org/abs/2410.06481v1,Leaf Stripping on Uniform Attachment Trees,"In this note we analyze the performance of a simple root-finding algorithm in
+uniform attachment trees. The leaf-stripping algorithm recursively removes all
+leaves of the tree for a carefully chosen number of rounds. We show that, with
+probability $1 - \epsilon$, the set of remaining vertices contains the root and
+has a size only depending on $\epsilon$ but not on the size of the tree.","['Louigi Addario-Berry', 'Anna Brandenberger', 'Simon Briend', 'Nicolas Broutin', 'Gábor Lugosi']","['math.PR', 'cs.DS', 'cs.LG', 'stat.ML']",2024-10-09 02:15:57+00:00
+http://arxiv.org/abs/2410.06407v1,A Skewness-Based Criterion for Addressing Heteroscedastic Noise in Causal Discovery,"Real-world data often violates the equal-variance assumption
+(homoscedasticity), making it essential to account for heteroscedastic noise in
+causal discovery. In this work, we explore heteroscedastic symmetric noise
+models (HSNMs), where the effect $Y$ is modeled as $Y = f(X) + \sigma(X)N$,
+with $X$ as the cause and $N$ as independent noise following a symmetric
+distribution. We introduce a novel criterion for identifying HSNMs based on the
+skewness of the score (i.e., the gradient of the log density) of the data
+distribution. This criterion establishes a computationally tractable
+measurement that is zero in the causal direction but nonzero in the anticausal
+direction, enabling the causal direction discovery. We extend this
+skewness-based criterion to the multivariate setting and propose SkewScore, an
+algorithm that handles heteroscedastic noise without requiring the extraction
+of exogenous noise. We also conduct a case study on the robustness of SkewScore
+in a bivariate model with a latent confounder, providing theoretical insights
+into its performance. Empirical studies further validate the effectiveness of
+the proposed method.","['Yingyu Lin', 'Yuxing Huang', 'Wenqin Liu', 'Haoran Deng', 'Ignavier Ng', 'Kun Zhang', 'Mingming Gong', 'Yi-An Ma', 'Biwei Huang']","['cs.LG', 'stat.ME', 'stat.ML']",2024-10-08 22:28:30+00:00
+http://arxiv.org/abs/2410.06378v1,Covering Numbers for Deep ReLU Networks with Applications to Function Approximation and Nonparametric Regression,"Covering numbers of families of (deep) ReLU networks have been used to
+characterize their approximation-theoretic performance, upper-bound the
+prediction error they incur in nonparametric regression, and quantify their
+classification capacity. These results are based on covering number upper
+bounds obtained through the explicit construction of coverings. Lower bounds on
+covering numbers do not seem to be available in the literature. The present
+paper fills this gap by deriving tight (up to a multiplicative constant) lower
+and upper bounds on the covering numbers of fully-connected networks with
+bounded weights, sparse networks with bounded weights, and fully-connected
+networks with quantized weights. Thanks to the tightness of the bounds, a
+fundamental understanding of the impact of sparsity, quantization, bounded vs.
+unbounded weights, and network output truncation can be developed. Furthermore,
+the bounds allow to characterize the fundamental limits of neural network
+transformation, including network compression, and lead to sharp upper bounds
+on the prediction error in nonparametric regression through deep networks.
+Specifically, we can remove a $\log^6(n)$-factor in the best-known sample
+complexity rate in the estimation of Lipschitz functions through deep networks
+thereby establishing optimality. Finally, we identify a systematic relation
+between optimal nonparametric regression and optimal approximation through deep
+networks, unifying numerous results in the literature and uncovering general
+underlying principles.","['Weigutian Ou', 'Helmut Bölcskei']","['stat.ML', 'cs.AI', 'cs.IT', 'cs.LG', 'math.IT', '68T07, 41A25, 62G08']",2024-10-08 21:23:14+00:00
+http://arxiv.org/abs/2410.06369v2,Communication-Efficient Federated Group Distributionally Robust Optimization,"Federated learning faces challenges due to the heterogeneity in data volumes
+and distributions at different clients, which can compromise model
+generalization ability to various distributions. Existing approaches to address
+this issue based on group distributionally robust optimization (GDRO) often
+lead to high communication and sample complexity. To this end, this work
+introduces algorithms tailored for communication-efficient Federated Group
+Distributionally Robust Optimization (FGDRO). Our contributions are threefold:
+Firstly, we introduce the FGDRO-CVaR algorithm, which optimizes the average
+top-K losses while reducing communication complexity to $O(1/\epsilon^4)$,
+where $\epsilon$ denotes the desired precision level. Secondly, our FGDRO-KL
+algorithm is crafted to optimize KL regularized FGDRO, cutting communication
+complexity to $O(1/\epsilon^3)$. Lastly, we propose FGDRO-KL-Adam to utilize
+Adam-type local updates in FGDRO-KL, which not only maintains a communication
+cost of $O(1/\epsilon^3)$ but also shows potential to surpass SGD-type local
+steps in practical applications. The effectiveness of our algorithms has been
+demonstrated on a variety of real-world tasks, including natural language
+processing and computer vision.","['Zhishuai Guo', 'Tianbao Yang']","['cs.LG', 'cs.DC', 'stat.ML']",2024-10-08 21:07:53+00:00
+http://arxiv.org/abs/2410.06333v1,Batched Bayesian optimization with correlated candidate uncertainties,"Batched Bayesian optimization (BO) can accelerate molecular design by
+efficiently identifying top-performing compounds from a large chemical library.
+Existing acquisition strategies for batch design in BO aim to balance
+exploration and exploitation. This often involves optimizing non-additive batch
+acquisition functions, necessitating approximation via myopic construction
+and/or diversity heuristics. In this work, we propose an acquisition strategy
+for discrete optimization that is motivated by pure exploitation, qPO
+(multipoint Probability of Optimality). qPO maximizes the probability that the
+batch includes the true optimum, which is expressible as the sum over
+individual acquisition scores and thereby circumvents the combinatorial
+challenge of optimizing a batch acquisition function. We differentiate the
+proposed strategy from parallel Thompson sampling and discuss how it implicitly
+captures diversity. Finally, we apply our method to the model-guided
+exploration of large chemical libraries and provide empirical evidence that it
+performs better than or on par with state-of-the-art methods in batched
+Bayesian optimization.","['Jenna Fromer', 'Runzhong Wang', 'Mrunali Manjrekar', 'Austin Tripp', 'José Miguel Hernández-Lobato', 'Connor W. Coley']","['cs.LG', 'stat.ML']",2024-10-08 20:13:12+00:00
+http://arxiv.org/abs/2410.06329v1,Bayesian Estimation and Tuning-Free Rank Detection for Probability Mass Function Tensors,"Obtaining a reliable estimate of the joint probability mass function (PMF) of
+a set of random variables from observed data is a significant objective in
+statistical signal processing and machine learning. Modelling the joint PMF as
+a tensor that admits a low-rank canonical polyadic decomposition (CPD) has
+enabled the development of efficient PMF estimation algorithms. However, these
+algorithms require the rank (model order) of the tensor to be specified
+beforehand. In real-world applications, the true rank is unknown. Therefore, an
+appropriate rank is usually selected from a candidate set either by observing
+validation errors or by computing various likelihood-based information
+criteria, a procedure which is computationally expensive for large datasets.
+This paper presents a novel Bayesian framework for estimating the joint PMF and
+automatically inferring its rank from observed data. We specify a Bayesian PMF
+estimation model and employ appropriate prior distributions for the model
+parameters, allowing for tuning-free rank inference via a single training run.
+We then derive a deterministic solution based on variational inference (VI) to
+approximate the posterior distributions of various model parameters.
+Additionally, we develop a scalable version of the VI-based approach by
+leveraging stochastic variational inference (SVI) to arrive at an efficient
+algorithm whose complexity scales sublinearly with the size of the dataset.
+Numerical experiments involving both synthetic data and real movie
+recommendation data illustrate the advantages of our VI and SVI-based methods
+in terms of estimation accuracy, automatic rank detection, and computational
+efficiency.","['Joseph K. Chege', 'Arie Yeredor', 'Martin Haardt']","['stat.ML', 'cs.LG', 'eess.SP']",2024-10-08 20:07:49+00:00
+http://arxiv.org/abs/2410.06326v1,A convex formulation of covariate-adjusted Gaussian graphical models via natural parametrization,"Gaussian graphical models (GGMs) are widely used for recovering the
+conditional independence structure among random variables. Recently, several
+key advances have been made to exploit an additional set of variables for
+better estimating the GGMs of the variables of interest. For example, in
+co-expression quantitative trait locus (eQTL) studies, both the mean expression
+level of genes as well as their pairwise conditional independence structure may
+be adjusted by genetic variants local to those genes. Existing methods to
+estimate covariate-adjusted GGMs either allow only the mean to depend on
+covariates or suffer from poor scaling assumptions due to the inherent
+non-convexity of simultaneously estimating the mean and precision matrix. In
+this paper, we propose a convex formulation that jointly estimates the
+covariate-adjusted mean and precision matrix by utilizing the natural
+parametrization of the multivariate Gaussian likelihood. This convexity yields
+theoretically better performance as the sparsity and dimension of the
+covariates grow large relative to the number of samples. We verify our
+theoretical results with numerical simulations and perform a reanalysis of an
+eQTL study of glioblastoma multiforme (GBM), an aggressive form of brain
+cancer.","['Ruobin Liu', 'Guo Yu']","['stat.ME', 'stat.ML']",2024-10-08 20:02:10+00:00
+http://arxiv.org/abs/2410.06317v1,Learning in complex action spaces without policy gradients,"Conventional wisdom suggests that policy gradient methods are better suited
+to complex action spaces than action-value methods. However, foundational
+studies have shown equivalences between these paradigms in small and finite
+action spaces (O'Donoghue et al., 2017; Schulman et al., 2017a). This raises
+the question of why their computational applicability and performance diverge
+as the complexity of the action space increases. We hypothesize that the
+apparent superiority of policy gradients in such settings stems not from
+intrinsic qualities of the paradigm, but from universal principles that can
+also be applied to action-value methods to serve similar functionality. We
+identify three such principles and provide a framework for incorporating them
+into action-value methods. To support our hypothesis, we instantiate this
+framework in what we term QMLE, for Q-learning with maximum likelihood
+estimation. Our results show that QMLE can be applied to complex action spaces
+with a controllable computational cost that is comparable to that of policy
+gradient methods, all without using policy gradients. Furthermore, QMLE
+demonstrates strong performance on the DeepMind Control Suite, even when
+compared to the state-of-the-art methods such as DMPO and D4PG.","['Arash Tavakoli', 'Sina Ghiassian', 'Nemanja Rakićević']","['cs.LG', 'cs.AI', 'stat.ML']",2024-10-08 19:49:34+00:00
+http://arxiv.org/abs/2410.06307v1,Model Predictive Control is Almost Optimal for Restless Bandit,"We consider the discrete time infinite horizon average reward restless
+markovian bandit (RMAB) problem. We propose a \emph{model predictive control}
+based non-stationary policy with a rolling computational horizon $\tau$. At
+each time-slot, this policy solves a $\tau$ horizon linear program whose first
+control value is kept as a control for the RMAB. Our solution requires minimal
+assumptions and quantifies the loss in optimality in terms of $\tau$ and the
+number of arms, $N$. We show that its sub-optimality gap is $O(1/\sqrt{N})$ in
+general, and $\exp(-\Omega(N))$ under a local-stability condition. Our proof is
+based on a framework from dynamic control known as \emph{dissipativity}. Our
+solution easy to implement and performs very well in practice when compared to
+the state of the art. Further, both our solution and our proof methodology can
+easily be generalized to more general constrained MDP settings and should thus,
+be of great interest to the burgeoning RMAB community.","['Nicolas Gast', 'Dheeraj Narasimha']","['math.OC', 'cs.LG', 'math.PR', 'stat.ML']",2024-10-08 19:34:23+00:00
+http://arxiv.org/abs/2410.06264v1,Think While You Generate: Discrete Diffusion with Planned Denoising,"Discrete diffusion has achieved state-of-the-art performance, outperforming
+or approaching autoregressive models on standard benchmarks. In this work, we
+introduce Discrete Diffusion with Planned Denoising (DDPD), a novel framework
+that separates the generation process into two models: a planner and a
+denoiser. At inference time, the planner selects which positions to denoise
+next by identifying the most corrupted positions in need of denoising,
+including both initially corrupted and those requiring additional refinement.
+This plan-and-denoise approach enables more efficient reconstruction during
+generation by iteratively identifying and denoising corruptions in the optimal
+order. DDPD outperforms traditional denoiser-only mask diffusion methods,
+achieving superior results on language modeling benchmarks such as text8,
+OpenWebText, and token-based generation on ImageNet $256 \times 256$. Notably,
+in language modeling, DDPD significantly reduces the performance gap between
+diffusion-based and autoregressive methods in terms of generative perplexity.
+Code is available at https://github.com/liusulin/DDPD.","['Sulin Liu', 'Juno Nam', 'Andrew Campbell', 'Hannes Stärk', 'Yilun Xu', 'Tommi Jaakkola', 'Rafael Gómez-Bombarelli']","['cs.LG', 'cs.AI', 'cs.CL', 'cs.CV', 'stat.ML']",2024-10-08 18:03:34+00:00
+http://arxiv.org/abs/2410.06262v1,SymDiff: Equivariant Diffusion via Stochastic Symmetrisation,"We propose SymDiff, a novel method for constructing equivariant diffusion
+models using the recently introduced framework of stochastic symmetrisation.
+SymDiff resembles a learned data augmentation that is deployed at sampling
+time, and is lightweight, computationally efficient, and easy to implement on
+top of arbitrary off-the-shelf models. Notably, in contrast to previous work,
+SymDiff typically does not require any neural network components that are
+intrinsically equivariant, avoiding the need for complex parameterizations and
+the use of higher-order geometric features. Instead, our method can leverage
+highly scalable modern architectures as drop-in replacements for these more
+constrained alternatives. We show that this additional flexibility yields
+significant empirical benefit on $\mathrm{E}(3)$-equivariant molecular
+generation. To the best of our knowledge, this is the first application of
+symmetrisation to generative modelling, suggesting its potential in this domain
+more generally.","['Leo Zhang', 'Kianoosh Ashouritaklimi', 'Yee Whye Teh', 'Rob Cornish']","['cs.LG', 'stat.ML']",2024-10-08 18:02:29+00:00
+http://arxiv.org/abs/2410.06191v1,Benign Overfitting for Regression with Trained Two-Layer ReLU Networks,"We study the least-square regression problem with a two-layer fully-connected
+neural network, with ReLU activation function, trained by gradient flow. Our
+first result is a generalization result, that requires no assumptions on the
+underlying regression function or the noise other than that they are bounded.
+We operate in the neural tangent kernel regime, and our generalization result
+is developed via a decomposition of the excess risk into estimation and
+approximation errors, viewing gradient flow as an implicit regularizer. This
+decomposition in the context of neural networks is a novel perspective of
+gradient descent, and helps us avoid uniform convergence traps. In this work,
+we also establish that under the same setting, the trained network overfits to
+the data. Together, these results, establishes the first result on benign
+overfitting for finite-width ReLU networks for arbitrary regression functions.","['Junhyung Park', 'Patrick Bloebaum', 'Shiva Prasad Kasiviswanathan']","['cs.LG', 'cs.AI', 'stat.ML']",2024-10-08 16:54:23+00:00
+http://arxiv.org/abs/2410.06171v1,Stochastic Kernel Regularisation Improves Generalisation in Deep Kernel Machines,"Recent work developed convolutional deep kernel machines, achieving 92.7%
+test accuracy on CIFAR-10 using a ResNet-inspired architecture, which is SOTA
+for kernel methods. However, this still lags behind neural networks, which
+easily achieve over 94% test accuracy with similar architectures. In this work
+we introduce several modifications to improve the convolutional deep kernel
+machine's generalisation, including stochastic kernel regularisation, which
+adds noise to the learned Gram matrices during training. The resulting model
+achieves 94.5% test accuracy on CIFAR-10. This finding has important
+theoretical and practical implications, as it demonstrates that the ability to
+perform well on complex tasks like image classification is not unique to neural
+networks. Instead, other approaches including deep kernel methods can achieve
+excellent performance on such tasks, as long as they have the capacity to learn
+representations from data.","['Edward Milsom', 'Ben Anson', 'Laurence Aitchison']","['stat.ML', 'cs.LG']",2024-10-08 16:15:53+00:00
+http://arxiv.org/abs/2410.06163v2,Likelihood-based Differentiable Structure Learning,"Existing approaches to differentiable structure learning of directed acyclic
+graphs (DAGs) rely on strong identifiability assumptions in order to guarantee
+that global minimizers of the acyclicity-constrained optimization problem
+identifies the true DAG. Moreover, it has been observed empirically that the
+optimizer may exploit undesirable artifacts in the loss function. We explain
+and remedy these issues by studying the behavior of differentiable
+acyclicity-constrained programs under general likelihoods with multiple global
+minimizers. By carefully regularizing the likelihood, it is possible to
+identify the sparsest model in the Markov equivalence class, even in the
+absence of an identifiable parametrization. We first study the Gaussian case in
+detail, showing how proper regularization of the likelihood defines a score
+that identifies the sparsest model. Assuming faithfulness, it also recovers the
+Markov equivalence class. These results are then generalized to general models
+and likelihoods, where the same claims hold. These theoretical results are
+validated empirically, showing how this can be done using standard
+gradient-based optimizers, thus paving the way for differentiable structure
+learning under general models and losses.","['Chang Deng', 'Kevin Bello', 'Pradeep Ravikumar', 'Bryon Aragam']","['stat.ML', 'cs.LG', 'math.ST', 'stat.ME', 'stat.TH']",2024-10-08 16:08:24+00:00
+http://arxiv.org/abs/2410.06128v1,Zero-Shot Learning of Causal Models,"With the increasing acquisition of datasets over time, we now have access to
+precise and varied descriptions of the world, capturing all sorts of phenomena.
+These datasets can be seen as empirical observations of unknown causal
+generative processes, which can commonly be described by Structural Causal
+Models (SCMs). Recovering these causal generative processes from observations
+poses formidable challenges, and often require to learn a specific generative
+model for each dataset. In this work, we propose to learn a \emph{single} model
+capable of inferring in a zero-shot manner the causal generative processes of
+datasets. Rather than learning a specific SCM for each dataset, we enable the
+Fixed-Point Approach (FiP) proposed in~\cite{scetbon2024fip}, to infer the
+generative SCMs conditionally on their empirical representations. More
+specifically, we propose to amortize the learning of a conditional version of
+FiP to infer generative SCMs from observations and causal structures on
+synthetically generated datasets. We show that our model is capable of
+predicting in zero-shot the true generative SCMs, and as a by-product, of (i)
+generating new dataset samples, and (ii) inferring intervened ones. Our
+experiments demonstrate that our amortized procedure achieves performances on
+par with SoTA methods trained specifically for each dataset on both in and
+out-of-distribution problems. To the best of our knowledge, this is the first
+time that SCMs are inferred in a zero-shot manner from observations, paving the
+way for a paradigmatic shift towards the assimilation of causal knowledge
+across datasets.","['Divyat Mahajan', 'Jannes Gladrow', 'Agrin Hilmkil', 'Cheng Zhang', 'Meyer Scetbon']","['cs.LG', 'stat.ML']",2024-10-08 15:31:33+00:00
+http://arxiv.org/abs/2410.06025v2,Sparse Repellency for Shielded Generation in Text-to-image Diffusion Models,"The increased adoption of diffusion models in text-to-image generation has
+triggered concerns on their reliability. Such models are now closely
+scrutinized under the lens of various metrics, notably calibration, fairness,
+or compute efficiency. We focus in this work on two issues that arise when
+deploying these models: a lack of diversity when prompting images, and a
+tendency to recreate images from the training set. To solve both problems, we
+propose a method that coaxes the sampled trajectories of pretrained diffusion
+models to land on images that fall outside of a reference set. We achieve this
+by adding repellency terms to the diffusion SDE throughout the generation
+trajectory, which are triggered whenever the path is expected to land too
+closely to an image in the shielded reference set. Our method is sparse in the
+sense that these repellency terms are zero and inactive most of the time, and
+even more so towards the end of the generation trajectory. Our method, named
+SPELL for sparse repellency, can be used either with a static reference set
+that contains protected images, or dynamically, by updating the set at each
+timestep with the expected images concurrently generated within a batch. We
+show that adding SPELL to popular diffusion models improves their diversity
+while impacting their FID only marginally, and performs comparatively better
+than other recent training-free diversity methods. We also demonstrate how
+SPELL can ensure a shielded generation away from a very large set of protected
+images by considering all 1.2M images from ImageNet as the protected set.","['Michael Kirchhof', 'James Thornton', 'Pierre Ablin', 'Louis Béthune', 'Eugene Ndiaye', 'Marco Cuturi']","['cs.CV', 'cs.LG', 'stat.ML']",2024-10-08 13:26:32+00:00
+http://arxiv.org/abs/2410.06012v2,Generalized Sparse Additive Model with Unknown Link Function,"Generalized additive models (GAM) have been successfully applied to high
+dimensional data analysis. However, most existing methods cannot simultaneously
+estimate the link function, the component functions and the variable
+interaction. To alleviate this problem, we propose a new sparse additive model,
+named generalized sparse additive model with unknown link function (GSAMUL), in
+which the component functions are estimated by B-spline basis and the unknown
+link function is estimated by a multi-layer perceptron (MLP) network.
+Furthermore, $\ell_{2,1}$-norm regularizer is used for variable selection. The
+proposed GSAMUL can realize both variable selection and hidden interaction. We
+integrate this estimation into a bilevel optimization problem, where the data
+is split into training set and validation set. In theory, we provide the
+guarantees about the convergence of the approximate procedure. In applications,
+experimental evaluations on both synthetic and real world data sets
+consistently validate the effectiveness of the proposed approach.","['Peipei Yuan', 'Xinge You', 'Hong Chen', 'Xuelin Zhang', 'Qinmu Peng']","['stat.ML', 'cs.LG']",2024-10-08 13:13:58+00:00
+http://arxiv.org/abs/2410.05898v3,"Manifolds, Random Matrices and Spectral Gaps: The geometric phases of generative diffusion","In this paper, we investigate the latent geometry of generative diffusion
+models under the manifold hypothesis. To this purpose, we analyze the spectrum
+of eigenvalues (and singular values) of the Jacobian of the score function,
+whose discontinuities (gaps) reveal the presence and dimensionality of distinct
+sub-manifolds. Using a statistical physics approach, we derive the spectral
+distributions and formulas for the spectral gaps under several distributional
+assumptions and we compare these theoretical predictions with the spectra
+estimated from trained networks. Our analysis reveals the existence of three
+distinct qualitative phases during the generative process: a trivial phase; a
+manifold coverage phase where the diffusion process fits the distribution
+internal to the manifold; a consolidation phase where the score becomes
+orthogonal to the manifold and all particles are projected on the support of
+the data. This `division of labor' between different timescales provides an
+elegant explanation on why generative diffusion models are not affected by the
+manifold overfitting phenomenon that plagues likelihood-based models, since the
+internal distribution and the manifold geometry are produced at different time
+points during generation.","['Enrico Ventura', 'Beatrice Achilli', 'Gianluigi Silvestri', 'Carlo Lucibello', 'Luca Ambrogioni']","['stat.ML', 'cs.LG']",2024-10-08 10:55:40+00:00
+http://arxiv.org/abs/2410.05880v1,Improved Sample Complexity for Private Nonsmooth Nonconvex Optimization,"We study differentially private (DP) optimization algorithms for stochastic
+and empirical objectives which are neither smooth nor convex, and propose
+methods that return a Goldstein-stationary point with sample complexity bounds
+that improve on existing works. We start by providing a single-pass
+$(\epsilon,\delta)$-DP algorithm that returns an $(\alpha,\beta)$-stationary
+point as long as the dataset is of size
+$\widetilde{\Omega}\left(1/\alpha\beta^{3}+d/\epsilon\alpha\beta^{2}+d^{3/4}/\epsilon^{1/2}\alpha\beta^{5/2}\right)$,
+which is $\Omega(\sqrt{d})$ times smaller than the algorithm of Zhang et al.
+[2024] for this task, where $d$ is the dimension. We then provide a multi-pass
+polynomial time algorithm which further improves the sample complexity to
+$\widetilde{\Omega}\left(d/\beta^2+d^{3/4}/\epsilon\alpha^{1/2}\beta^{3/2}\right)$,
+by designing a sample efficient ERM algorithm, and proving that
+Goldstein-stationary points generalize from the empirical loss to the
+population loss.","['Guy Kornowski', 'Daogao Liu', 'Kunal Talwar']","['cs.LG', 'cs.CR', 'math.OC', 'stat.ML']",2024-10-08 10:15:49+00:00
+http://arxiv.org/abs/2410.05856v1,Stochastic Bandits for Egalitarian Assignment,"We study EgalMAB, an egalitarian assignment problem in the context of
+stochastic multi-armed bandits. In EgalMAB, an agent is tasked with assigning a
+set of users to arms. At each time step, the agent must assign exactly one arm
+to each user such that no two users are assigned to the same arm. Subsequently,
+each user obtains a reward drawn from the unknown reward distribution
+associated with its assigned arm. The agent's objective is to maximize the
+minimum expected cumulative reward among all users over a fixed horizon. This
+problem has applications in areas such as fairness in job and resource
+allocations, among others. We design and analyze a UCB-based policy EgalUCB and
+establish upper bounds on the cumulative regret. In complement, we establish an
+almost-matching policy-independent impossibility result.","['Eugene Lim', 'Vincent Y. F. Tan', 'Harold Soh']","['stat.ML', 'cs.LG']",2024-10-08 09:49:47+00:00
+http://arxiv.org/abs/2410.05837v1,A noise-corrected Langevin algorithm and sampling by half-denoising,"The Langevin algorithm is a classic method for sampling from a given pdf in a
+real space. In its basic version, it only requires knowledge of the gradient of
+the log-density, also called the score function. However, in deep learning, it
+is often easier to learn the so-called ""noisy score function"", i.e. the
+gradient of the log-density of noisy data, more precisely when Gaussian noise
+is added to the data. Such an estimate is biased and complicates the use of the
+Langevin method. Here, we propose a noise-corrected version of the Langevin
+algorithm, where the bias due to noisy data is removed, at least regarding
+first-order terms. Unlike diffusion models, our algorithm needs to know the
+noisy score function for one single noise level only. We further propose a
+simple special case which has an interesting intuitive interpretation of
+iteratively adding noise the data and then attempting to remove half of that
+noise.",['Aapo Hyvärinen'],"['cs.LG', 'stat.ML']",2024-10-08 09:06:32+00:00
+http://arxiv.org/abs/2410.05810v1,Uncertainty-Aware Fairness-Adaptive Classification Trees,"In an era where artificial intelligence and machine learning algorithms
+increasingly impact human life, it is crucial to develop models that account
+for potential discrimination in their predictions. This paper tackles this
+problem by introducing a new classification tree algorithm using a novel
+splitting criterion that incorporates fairness adjustments into the
+tree-building process. The proposed method integrates a fairness-aware impurity
+measure that balances predictive accuracy with fairness across protected
+groups. By ensuring that each splitting node considers both the gain in
+classification error and the fairness, our algorithm encourages splits that
+mitigate discrimination. Importantly, in penalizing unfair splits, we account
+for the uncertainty in the fairness metric by utilizing its confidence interval
+instead of relying on its point estimate. Experimental results on benchmark and
+synthetic datasets illustrate that our method effectively reduces
+discriminatory predictions compared to traditional classification trees,
+without significant loss in overall accuracy.","['Anna Gottard', 'Vanessa Verrina', 'Sabrina Giordano']","['stat.ML', 'cs.LG']",2024-10-08 08:42:12+00:00
+http://arxiv.org/abs/2410.05760v1,Training-free Diffusion Model Alignment with Sampling Demons,"Aligning diffusion models with user preferences has been a key challenge.
+Existing methods for aligning diffusion models either require retraining or are
+limited to differentiable reward functions. To address these limitations, we
+propose a stochastic optimization approach, dubbed Demon, to guide the
+denoising process at inference time without backpropagation through reward
+functions or model retraining. Our approach works by controlling noise
+distribution in denoising steps to concentrate density on regions corresponding
+to high rewards through stochastic optimization. We provide comprehensive
+theoretical and empirical evidence to support and validate our approach,
+including experiments that use non-differentiable sources of rewards such as
+Visual-Language Model (VLM) APIs and human judgements. To the best of our
+knowledge, the proposed approach is the first inference-time,
+backpropagation-free preference alignment method for diffusion models. Our
+method can be easily integrated with existing diffusion models without further
+training. Our experiments show that the proposed approach significantly
+improves the average aesthetics scores for text-to-image generation.","['Po-Hung Yeh', 'Kuang-Huei Lee', 'Jun-Cheng Chen']","['cs.CV', 'cs.AI', 'cs.LG', 'math.OC', 'stat.ML']",2024-10-08 07:33:49+00:00
+http://arxiv.org/abs/2410.05757v1,Temperature Optimization for Bayesian Deep Learning,"The Cold Posterior Effect (CPE) is a phenomenon in Bayesian Deep Learning
+(BDL), where tempering the posterior to a cold temperature often improves the
+predictive performance of the posterior predictive distribution (PPD). Although
+the term `CPE' suggests colder temperatures are inherently better, the BDL
+community increasingly recognizes that this is not always the case. Despite
+this, there remains no systematic method for finding the optimal temperature
+beyond grid search. In this work, we propose a data-driven approach to select
+the temperature that maximizes test log-predictive density, treating the
+temperature as a model parameter and estimating it directly from the data. We
+empirically demonstrate that our method performs comparably to grid search, at
+a fraction of the cost, across both regression and classification tasks.
+Finally, we highlight the differing perspectives on CPE between the BDL and
+Generalized Bayes communities: while the former primarily focuses on predictive
+performance of the PPD, the latter emphasizes calibrated uncertainty and
+robustness to model misspecification; these distinct objectives lead to
+different temperature preferences.","['Kenyon Ng', 'Chris van der Heide', 'Liam Hodgkinson', 'Susan Wei']","['stat.ML', 'cs.LG', 'stat.CO', 'stat.ME']",2024-10-08 07:32:22+00:00
+http://arxiv.org/abs/2410.05754v1,Simple Relative Deviation Bounds for Covariance and Gram Matrices,"We provide non-asymptotic, relative deviation bounds for the eigenvalues of
+empirical covariance and gram matrices in general settings. Unlike typical
+uniform bounds, which may fail to capture the behavior of smaller eigenvalues,
+our results provide sharper control across the spectrum. Our analysis is based
+on a general-purpose theorem that allows one to convert existing uniform bounds
+into relative ones. The theorems and techniques emphasize simplicity and should
+be applicable across various settings.","['Daniel Barzilai', 'Ohad Shamir']","['math.PR', 'cs.LG', 'math.ST', 'stat.ML', 'stat.TH']",2024-10-08 07:28:56+00:00
+http://arxiv.org/abs/2410.05753v1,Pathwise Gradient Variance Reduction with Control Variates in Variational Inference,"Variational inference in Bayesian deep learning often involves computing the
+gradient of an expectation that lacks a closed-form solution. In these cases,
+pathwise and score-function gradient estimators are the most common approaches.
+The pathwise estimator is often favoured for its substantially lower variance
+compared to the score-function estimator, which typically requires variance
+reduction techniques. However, recent research suggests that even pathwise
+gradient estimators could benefit from variance reduction. In this work, we
+review existing control-variates-based variance reduction methods for pathwise
+gradient estimators to assess their effectiveness. Notably, these methods often
+rely on integrand approximations and are applicable only to simple variational
+families. To address this limitation, we propose applying zero-variance control
+variates to pathwise gradient estimators. This approach offers the advantage of
+requiring minimal assumptions about the variational distribution, other than
+being able to sample from it.","['Kenyon Ng', 'Susan Wei']","['stat.ML', 'cs.LG', 'stat.CO', 'stat.ME']",2024-10-08 07:28:46+00:00
+http://arxiv.org/abs/2410.05700v1,Log-concave Sampling over a Convex Body with a Barrier: a Robust and Unified Dikin Walk,"We consider the problem of sampling from a $d$-dimensional log-concave
+distribution $\pi(\theta) \propto \exp(-f(\theta))$ for $L$-Lipschitz $f$,
+constrained to a convex body with an efficiently computable self-concordant
+barrier function, contained in a ball of radius $R$ with a $w$-warm start.
+  We propose a \emph{robust} sampling framework that computes spectral
+approximations to the Hessian of the barrier functions in each iteration. We
+prove that for polytopes that are described by $n$ hyperplanes, sampling with
+the Lee-Sidford barrier function mixes within $\widetilde
+O((d^2+dL^2R^2)\log(w/\delta))$ steps with a per step cost of $\widetilde
+O(nd^{\omega-1})$, where $\omega\approx 2.37$ is the fast matrix multiplication
+exponent. Compared to the prior work of Mangoubi and Vishnoi, our approach
+gives faster mixing time as we are able to design a generalized soft-threshold
+Dikin walk beyond log-barrier.
+  We further extend our result to show how to sample from a $d$-dimensional
+spectrahedron, the constrained set of a semidefinite program, specified by the
+set $\{x\in \mathbb{R}^d: \sum_{i=1}^d x_i A_i \succeq C \}$ where
+$A_1,\ldots,A_d, C$ are $n\times n$ real symmetric matrices. We design a walk
+that mixes in $\widetilde O((nd+dL^2R^2)\log(w/\delta))$ steps with a per
+iteration cost of $\widetilde O(n^\omega+n^2d^{3\omega-5})$. We improve the
+mixing time bound of prior best Dikin walk due to Narayanan and Rakhlin that
+mixes in $\widetilde O((n^2d^3+n^2dL^2R^2)\log(w/\delta))$ steps.","['Yuzhou Gu', 'Nikki Lijing Kuang', 'Yi-An Ma', 'Zhao Song', 'Lichen Zhang']","['cs.DS', 'cs.LG', 'stat.ML']",2024-10-08 05:32:51+00:00
+http://arxiv.org/abs/2410.05690v1,Long-Context Linear System Identification,"This paper addresses the problem of long-context linear system
+identification, where the state $x_t$ of a dynamical system at time $t$ depends
+linearly on previous states $x_s$ over a fixed context window of length $p$. We
+establish a sample complexity bound that matches the i.i.d. parametric rate up
+to logarithmic factors for a broad class of systems, extending previous works
+that considered only first-order dependencies. Our findings reveal a
+learning-without-mixing phenomenon, indicating that learning long-context
+linear autoregressive models is not hindered by slow mixing properties
+potentially associated with extended context windows. Additionally, we extend
+these results to (i) shared low-rank representations, where rank-regularized
+estimators improve rates with respect to dimensionality, and (ii) misspecified
+context lengths in strictly stable systems, where shorter contexts offer
+statistical advantages.","['Oğuz Kaan Yüksel', 'Mathieu Even', 'Nicolas Flammarion']","['stat.ML', 'cs.LG', 'cs.SY', 'eess.SY', 'math.ST', 'stat.TH']",2024-10-08 05:15:21+00:00
+http://arxiv.org/abs/2410.05660v1,Robust Transfer Learning for Active Level Set Estimation with Locally Adaptive Gaussian Process Prior,"The objective of active level set estimation for a black-box function is to
+precisely identify regions where the function values exceed or fall below a
+specified threshold by iteratively performing function evaluations to gather
+more information about the function. This becomes particularly important when
+function evaluations are costly, drastically limiting our ability to acquire
+large datasets. A promising way to sample-efficiently model the black-box
+function is by incorporating prior knowledge from a related function. However,
+this approach risks slowing down the estimation task if the prior knowledge is
+irrelevant or misleading. In this paper, we present a novel transfer learning
+method for active level set estimation that safely integrates a given prior
+knowledge while constantly adjusting it to guarantee a robust performance of a
+level set estimation algorithm even when the prior knowledge is irrelevant. We
+theoretically analyze this algorithm to show that it has a better level set
+convergence compared to standard transfer learning approaches that do not make
+any adjustment to the prior. Additionally, extensive experiments across
+multiple datasets confirm the effectiveness of our method when applied to
+various different level set estimation algorithms as well as different transfer
+learning scenarios.","['Giang Ngo', 'Dang Nguyen', 'Sunil Gupta']","['cs.LG', 'stat.ML']",2024-10-08 03:19:48+00:00
+http://arxiv.org/abs/2410.05626v1,On the Impacts of the Random Initialization in the Neural Tangent Kernel Theory,"This paper aims to discuss the impact of random initialization of neural
+networks in the neural tangent kernel (NTK) theory, which is ignored by most
+recent works in the NTK theory. It is well known that as the network's width
+tends to infinity, the neural network with random initialization converges to a
+Gaussian process $f^{\mathrm{GP}}$, which takes values in $L^{2}(\mathcal{X})$,
+where $\mathcal{X}$ is the domain of the data. In contrast, to adopt the
+traditional theory of kernel regression, most recent works introduced a special
+mirrored architecture and a mirrored (random) initialization to ensure the
+network's output is identically zero at initialization. Therefore, it remains a
+question whether the conventional setting and mirrored initialization would
+make wide neural networks exhibit different generalization capabilities. In
+this paper, we first show that the training dynamics of the gradient flow of
+neural networks with random initialization converge uniformly to that of the
+corresponding NTK regression with random initialization $f^{\mathrm{GP}}$. We
+then show that $\mathbf{P}(f^{\mathrm{GP}} \in [\mathcal{H}^{\mathrm{NT}}]^{s})
+= 1$ for any $s < \frac{3}{d+1}$ and $\mathbf{P}(f^{\mathrm{GP}} \in
+[\mathcal{H}^{\mathrm{NT}}]^{s}) = 0$ for any $s \geq \frac{3}{d+1}$, where
+$[\mathcal{H}^{\mathrm{NT}}]^{s}$ is the real interpolation space of the RKHS
+$\mathcal{H}^{\mathrm{NT}}$ associated with the NTK. Consequently, the
+generalization error of the wide neural network trained by gradient descent is
+$\Omega(n^{-\frac{3}{d+3}})$, and it still suffers from the curse of
+dimensionality. On one hand, the result highlights the benefits of mirror
+initialization. On the other hand, it implies that NTK theory may not fully
+explain the superior performance of neural networks.","['Guhan Chen', 'Yicheng Li', 'Qian Lin']","['stat.ML', 'cs.LG']",2024-10-08 02:22:50+00:00
+http://arxiv.org/abs/2410.05609v1,The Breakdown of Gaussian Universality in Classification of High-dimensional Mixtures,"The assumption of Gaussian or Gaussian mixture data has been extensively
+exploited in a long series of precise performance analyses of machine learning
+(ML) methods, on large datasets having comparably numerous samples and
+features. To relax this restrictive assumption, subsequent efforts have been
+devoted to establish ""Gaussian equivalent principles"" by studying scenarios of
+Gaussian universality where the asymptotic performance of ML methods on
+non-Gaussian data remains unchanged when replaced with Gaussian data having the
+same mean and covariance. Beyond the realm of Gaussian universality, there are
+few exact results on how the data distribution affects the learning
+performance.
+  In this article, we provide a precise high-dimensional characterization of
+empirical risk minimization, for classification under a general mixture data
+setting of linear factor models that extends Gaussian mixtures. The Gaussian
+universality is shown to break down under this setting, in the sense that the
+asymptotic learning performance depends on the data distribution beyond the
+class means and covariances. To clarify the limitations of Gaussian
+universality in classification of mixture data and to understand the impact of
+its breakdown, we specify conditions for Gaussian universality and discuss
+their implications for the choice of loss function.","['Xiaoyi Mai', 'Zhenyu Liao']","['stat.ML', 'cs.LG', 'math.ST', 'stat.TH', '60B20 (Primary) 62H30, 68Q87 (Secondary)']",2024-10-08 01:45:37+00:00
+http://arxiv.org/abs/2410.05602v1,Amortized Control of Continuous State Space Feynman-Kac Model for Irregular Time Series,"Many real-world datasets, such as healthcare, climate, and economics, are
+often collected as irregular time series, which poses challenges for accurate
+modeling. In this paper, we propose the Amortized Control of continuous State
+Space Model (ACSSM) for continuous dynamical modeling of time series for
+irregular and discrete observations. We first present a multi-marginal Doob's
+$h$-transform to construct a continuous dynamical system conditioned on these
+irregular observations. Following this, we introduce a variational inference
+algorithm with a tight evidence lower bound (ELBO), leveraging stochastic
+optimal control (SOC) theory to approximate the intractable Doob's
+$h$-transform and simulate the conditioned dynamics. To improve efficiency and
+scalability during both training and inference, ACSSM employs amortized
+inference to decouple representation learning from the latent dynamics.
+Additionally, it incorporates a simulation-free latent dynamics framework and a
+transformer-based data assimilation scheme, facilitating parallel inference of
+the latent states and ELBO computation. Through empirical evaluations across a
+variety of real-world datasets, ACSSM demonstrates superior performance in
+tasks such as classification, regression, interpolation, and extrapolation,
+while maintaining computational efficiency.","['Byoungwoo Park', 'Hyungi Lee', 'Juho Lee']","['stat.ML', 'cs.LG']",2024-10-08 01:27:46+00:00
+http://arxiv.org/abs/2410.05597v1,SMART: A Flexible Approach to Regression using Spline-Based Multivariate Adaptive Regression Trees,"Decision trees are powerful for predictive modeling but often suffer from
+high variance when modeling continuous relationships. While algorithms like
+Multivariate Adaptive Regression Splines (MARS) excel at capturing such
+continuous relationships, they perform poorly when modeling discontinuities. To
+address the limitations of both approaches, we introduce Spline-based
+Multivariate Adaptive Regression Trees (SMART), which uses a decision tree to
+identify subsets of data with distinct continuous relationships and then
+leverages MARS to fit these relationships independently. Unlike other methods
+that rely on the tree structure to model interaction and higher-order terms,
+SMART leverages MARS's native ability to handle these terms, allowing the tree
+to focus solely on identifying discontinuities in the relationship. We test
+SMART on various datasets, demonstrating its improvement over state-of-the-art
+methods in such cases. Additionally, we provide an open-source implementation
+of our method to be used by practitioners.","['William Pattie', 'Arvind Krishna']","['stat.ML', 'cs.LG', '68T01', 'I.5.1; G.3']",2024-10-08 01:18:08+00:00
+http://arxiv.org/abs/2410.05552v3,Optimal Adaptive Experimental Design for Estimating Treatment Effect,"Given n experiment subjects with potentially heterogeneous covariates and two
+possible treatments, namely active treatment and control, this paper addresses
+the fundamental question of determining the optimal accuracy in estimating the
+treatment effect. Furthermore, we propose an experimental design that
+approaches this optimal accuracy, giving a (non-asymptotic) answer to this
+fundamental yet still open question. The methodological contribution is listed
+as following. First, we establish an idealized optimal estimator with minimal
+variance as benchmark, and then demonstrate that adaptive experiment is
+necessary to achieve near-optimal estimation accuracy. Secondly, by
+incorporating the concept of doubly robust method into sequential experimental
+design, we frame the optimal estimation problem as an online bandit learning
+problem, bridging the two fields of statistical estimation and bandit learning.
+Using tools and ideas from both bandit algorithm design and adaptive
+statistical estimation, we propose a general low switching adaptive experiment
+framework, which could be a generic research paradigm for a wide range of
+adaptive experimental design. Through novel lower bound techniques for
+non-i.i.d. data, we demonstrate the optimality of our proposed experiment.
+Numerical result indicates that the estimation accuracy approaches optimal with
+as few as two or three policy updates.","['Jiachun Li', 'David Simchi-Levi', 'Yunxiao Zhao']","['stat.ML', 'cs.LG']",2024-10-07 23:22:51+00:00
+http://arxiv.org/abs/2410.05548v1,Scalable Inference for Bayesian Multinomial Logistic-Normal Dynamic Linear Models,"Many scientific fields collect longitudinal count compositional data. Each
+observation is a multivariate count vector, where the total counts are
+arbitrary, and the information lies in the relative frequency of the counts.
+Multiple authors have proposed Bayesian Multinomial Logistic-Normal Dynamic
+Linear Models (MLN-DLMs) as a flexible approach to modeling these data.
+However, adoption of these methods has been limited by computational
+challenges. This article develops an efficient and accurate approach to
+posterior state estimation, called $\textit{Fenrir}$. Our approach relies on a
+novel algorithm for MAP estimation and an accurate approximation to a key
+posterior marginal of the model. As there are no equivalent methods against
+which we can compare, we also develop an optimized Stan implementation of
+MLN-DLMs. Our experiments suggest that Fenrir can be three orders of magnitude
+more efficient than Stan and can even be incorporated into larger sampling
+schemes for joint inference of model hyperparameters. Our methods are made
+available to the community as a user-friendly software library written in C++
+with an R interface.","['Manan Saxena', 'Tinghua Chen', 'Justin D. Silverman']","['stat.AP', 'stat.ME', 'stat.ML']",2024-10-07 23:20:14+00:00
+http://arxiv.org/abs/2410.05527v1,DOPL: Direct Online Preference Learning for Restless Bandits with Preference Feedback,"Restless multi-armed bandits (RMAB) has been widely used to model constrained
+sequential decision making problems, where the state of each restless arm
+evolves according to a Markov chain and each state transition generates a
+scalar reward. However, the success of RMAB crucially relies on the
+availability and quality of reward signals. Unfortunately, specifying an exact
+reward function in practice can be challenging and even infeasible. In this
+paper, we introduce Pref-RMAB, a new RMAB model in the presence of preference
+signals, where the decision maker only observes pairwise preference feedback
+rather than scalar reward from the activated arms at each decision epoch.
+Preference feedback, however, arguably contains less information than the
+scalar reward, which makes Pref-RMAB seemingly more difficult. To address this
+challenge, we present a direct online preference learning (DOPL) algorithm for
+Pref-RMAB to efficiently explore the unknown environments, adaptively collect
+preference data in an online manner, and directly leverage the preference
+feedback for decision-makings. We prove that DOPL yields a sublinear regret. To
+our best knowledge, this is the first algorithm to ensure
+$\tilde{\mathcal{O}}(\sqrt{T\ln T})$ regret for RMAB with preference feedback.
+Experimental results further demonstrate the effectiveness of DOPL.","['Guojun Xiong', 'Ujwal Dinesha', 'Debajoy Mukherjee', 'Jian Li', 'Srinivas Shakkottai']","['cs.LG', 'math.OC', 'stat.ML']",2024-10-07 22:14:20+00:00
+http://arxiv.org/abs/2410.05524v1,Deep Learning Methods for S Shaped Utility Maximisation with a Random Reference Point,"We consider the portfolio optimisation problem where the terminal function is
+an S-shaped utility applied at the difference between the wealth and a random
+benchmark process. We develop several numerical methods for solving the problem
+using deep learning and duality methods. We use deep learning methods to solve
+the associated Hamilton-Jacobi-Bellman equation for both the primal and dual
+problems, and the adjoint equation arising from the stochastic maximum
+principle. We compare the solution of this non-concave problem to that of
+concavified utility, a random function depending on the benchmark, in both
+complete and incomplete markets. We give some numerical results for power and
+log utilities to show the accuracy of the suggested algorithms.","['Ashley Davey', 'Harry Zheng']","['q-fin.CP', 'math.OC', 'stat.ML']",2024-10-07 22:07:59+00:00
+http://arxiv.org/abs/2410.05459v1,From Sparse Dependence to Sparse Attention: Unveiling How Chain-of-Thought Enhances Transformer Sample Efficiency,"Chain-of-thought (CoT) significantly enhances the reasoning performance of
+large language models (LLM). While current theoretical studies often attribute
+this improvement to increased expressiveness and computational capacity, we
+argue that expressiveness is not the primary limitation in the LLM regime, as
+current large models will fail on simple tasks. Using a parity-learning setup,
+we demonstrate that CoT can substantially improve sample efficiency even when
+the representation power is sufficient. Specifically, with CoT, a transformer
+can learn the function within polynomial samples, whereas without CoT, the
+required sample size is exponential. Additionally, we show that CoT simplifies
+the learning process by introducing sparse sequential dependencies among input
+tokens, and leads to a sparse and interpretable attention. We validate our
+theoretical analysis with both synthetic and real-world experiments, confirming
+that sparsity in attention layers is a key factor of the improvement induced by
+CoT.","['Kaiyue Wen', 'Huaqing Zhang', 'Hongzhou Lin', 'Jingzhao Zhang']","['cs.LG', 'cs.CL', 'stat.ML']",2024-10-07 19:45:09+00:00
+http://arxiv.org/abs/2410.05458v1,Testing Credibility of Public and Private Surveys through the Lens of Regression,"Testing whether a sample survey is a credible representation of the
+population is an important question to ensure the validity of any downstream
+research. While this problem, in general, does not have an efficient solution,
+one might take a task-based approach and aim to understand whether a certain
+data analysis tool, like linear regression, would yield similar answers both on
+the population and the sample survey. In this paper, we design an algorithm to
+test the credibility of a sample survey in terms of linear regression. In other
+words, we design an algorithm that can certify if a sample survey is good
+enough to guarantee the correctness of data analysis done using linear
+regression tools. Nowadays, one is naturally concerned about data privacy in
+surveys. Thus, we further test the credibility of surveys published in a
+differentially private manner. Specifically, we focus on Local Differential
+Privacy (LDP), which is a standard technique to ensure privacy in surveys where
+the survey participants might not trust the aggregator. We extend our algorithm
+to work even when the data analysis has been done using surveys with LDP. In
+the process, we also propose an algorithm that learns with high probability the
+guarantees a linear regression model on a survey published with LDP. Our
+algorithm also serves as a mechanism to learn linear regression models from
+data corrupted with noise coming from any subexponential distribution. We prove
+that it achieves the optimal estimation error bound for $\ell_1$ linear
+regression, which might be of broader interest. We prove the theoretical
+correctness of our algorithms while trying to reduce the sample complexity for
+both public and private surveys. We also numerically demonstrate the
+performance of our algorithms on real and synthetic datasets.","['Debabrota Basu', 'Sourav Chakraborty', 'Debarshi Chanda', 'Buddha Dev Das', 'Arijit Ghosh', 'Arnab Ray']","['cs.LG', 'cs.CR', 'stat.ME', 'stat.ML']",2024-10-07 19:44:20+00:00
+http://arxiv.org/abs/2410.05454v1,Meta-Dynamical State Space Models for Integrative Neural Data Analysis,"Learning shared structure across environments facilitates rapid learning and
+adaptive behavior in neural systems. This has been widely demonstrated and
+applied in machine learning to train models that are capable of generalizing to
+novel settings. However, there has been limited work exploiting the shared
+structure in neural activity during similar tasks for learning latent dynamics
+from neural recordings. Existing approaches are designed to infer dynamics from
+a single dataset and cannot be readily adapted to account for statistical
+heterogeneities across recordings. In this work, we hypothesize that similar
+tasks admit a corresponding family of related solutions and propose a novel
+approach for meta-learning this solution space from task-related neural
+activity of trained animals. Specifically, we capture the variabilities across
+recordings on a low-dimensional manifold which concisely parametrizes this
+family of dynamics, thereby facilitating rapid learning of latent dynamics
+given new recordings. We demonstrate the efficacy of our approach on few-shot
+reconstruction and forecasting of synthetic dynamical systems, and neural
+recordings from the motor cortex during different arm reaching tasks.","['Ayesha Vermani', 'Josue Nassar', 'Hyungju Jeon', 'Matthew Dowling', 'Il Memming Park']","['stat.ML', 'cs.LG', 'q-bio.NC']",2024-10-07 19:35:49+00:00
+http://arxiv.org/abs/2410.05444v1,Online scalable Gaussian processes with conformal prediction for guaranteed coverage,"The Gaussian process (GP) is a Bayesian nonparametric paradigm that is widely
+adopted for uncertainty quantification (UQ) in a number of safety-critical
+applications, including robotics, healthcare, as well as surveillance. The
+consistency of the resulting uncertainty values however, hinges on the premise
+that the learning function conforms to the properties specified by the GP
+model, such as smoothness, periodicity and more, which may not be satisfied in
+practice, especially with data arriving on the fly. To combat against such
+model mis-specification, we propose to wed the GP with the prevailing conformal
+prediction (CP), a distribution-free post-processing framework that produces it
+prediction sets with a provably valid coverage under the sole assumption of
+data exchangeability. However, this assumption is usually violated in the
+online setting, where a prediction set is sought before revealing the true
+label. To ensure long-term coverage guarantee, we will adaptively set the key
+threshold parameter based on the feedback whether the true label falls inside
+the prediction set. Numerical results demonstrate the merits of the online
+GP-CP approach relative to existing alternatives in the long-term coverage
+performance.","['Jinwen Xu', 'Qin Lu', 'Georgios B. Giannakis']","['cs.LG', 'stat.ME', 'stat.ML']",2024-10-07 19:22:15+00:00
+http://arxiv.org/abs/2410.05441v1,Thompson Sampling For Combinatorial Bandits: Polynomial Regret and Mismatched Sampling Paradox,"We consider Thompson Sampling (TS) for linear combinatorial semi-bandits and
+subgaussian rewards. We propose the first known TS whose finite-time regret
+does not scale exponentially with the dimension of the problem. We further show
+the ""mismatched sampling paradox"": A learner who knows the rewards
+distributions and samples from the correct posterior distribution can perform
+exponentially worse than a learner who does not know the rewards and simply
+samples from a well-chosen Gaussian posterior. The code used to generate the
+experiments is available at https://github.com/RaymZhang/CTS-Mismatched-Paradox","['Raymond Zhang', 'Richard Combes']","['stat.ML', 'cs.LG']",2024-10-07 19:17:08+00:00
+http://arxiv.org/abs/2410.05430v2,A Functional Extension of Semi-Structured Networks,"Semi-structured networks (SSNs) merge the structures familiar from additive
+models with deep neural networks, allowing the modeling of interpretable
+partial feature effects while capturing higher-order non-linearities at the
+same time. A significant challenge in this integration is maintaining the
+interpretability of the additive model component. Inspired by large-scale
+biomechanics datasets, this paper explores extending SSNs to functional data.
+Existing methods in functional data analysis are promising but often not
+expressive enough to account for all interactions and non-linearities and do
+not scale well to large datasets. Although the SSN approach presents a
+compelling potential solution, its adaptation to functional data remains
+complex. In this work, we propose a functional SSN method that retains the
+advantageous properties of classical functional regression approaches while
+also improving scalability. Our numerical experiments demonstrate that this
+approach accurately recovers underlying signals, enhances predictive
+performance, and performs favorably compared to competing methods.","['David Rügamer', 'Bernard X. W. Liew', 'Zainab Altai', 'Almond Stöcker']","['cs.LG', 'stat.AP', 'stat.CO', 'stat.ML']",2024-10-07 18:50:18+00:00
+http://arxiv.org/abs/2410.05263v1,Regression Conformal Prediction under Bias,"Uncertainty quantification is crucial to account for the imperfect
+predictions of machine learning algorithms for high-impact applications.
+Conformal prediction (CP) is a powerful framework for uncertainty
+quantification that generates calibrated prediction intervals with valid
+coverage. In this work, we study how CP intervals are affected by bias - the
+systematic deviation of a prediction from ground truth values - a phenomenon
+prevalent in many real-world applications. We investigate the influence of bias
+on interval lengths of two different types of adjustments -- symmetric
+adjustments, the conventional method where both sides of the interval are
+adjusted equally, and asymmetric adjustments, a more flexible method where the
+interval can be adjusted unequally in positive or negative directions. We
+present theoretical and empirical analyses characterizing how symmetric and
+asymmetric adjustments impact the ""tightness"" of CP intervals for regression
+tasks. Specifically for absolute residual and quantile-based non-conformity
+scores, we prove: 1) the upper bound of symmetrically adjusted interval lengths
+increases by $2|b|$ where $b$ is a globally applied scalar value representing
+bias, 2) asymmetrically adjusted interval lengths are not affected by bias, and
+3) conditions when asymmetrically adjusted interval lengths are guaranteed to
+be smaller than symmetric ones. Our analyses suggest that even if predictions
+exhibit significant drift from ground truth values, asymmetrically adjusted
+intervals are still able to maintain the same tightness and validity of
+intervals as if the drift had never happened, while symmetric ones
+significantly inflate the lengths. We demonstrate our theoretical results with
+two real-world prediction tasks: sparse-view computed tomography (CT)
+reconstruction and time-series weather forecasting. Our work paves the way for
+more bias-robust machine learning systems.","['Matt Y. Cheung', 'Tucker J. Netherton', 'Laurence E. Court', 'Ashok Veeraraghavan', 'Guha Balakrishnan']","['stat.ML', 'cs.AI', 'cs.LG', 'math.ST', 'stat.ME', 'stat.TH']",2024-10-07 17:59:09+00:00
+http://arxiv.org/abs/2410.05225v1,ETGL-DDPG: A Deep Deterministic Policy Gradient Algorithm for Sparse Reward Continuous Control,"We consider deep deterministic policy gradient (DDPG) in the context of
+reinforcement learning with sparse rewards. To enhance exploration, we
+introduce a search procedure, \emph{${\epsilon}{t}$-greedy}, which generates
+exploratory options for exploring less-visited states. We prove that search
+using $\epsilon t$-greedy has polynomial sample complexity under mild MDP
+assumptions. To more efficiently use the information provided by rewarded
+transitions, we develop a new dual experience replay buffer framework,
+\emph{GDRB}, and implement \emph{longest n-step returns}. The resulting
+algorithm, \emph{ETGL-DDPG}, integrates all three techniques: \bm{$\epsilon
+t$}-greedy, \textbf{G}DRB, and \textbf{L}ongest $n$-step, into DDPG. We
+evaluate ETGL-DDPG on standard benchmarks and demonstrate that it outperforms
+DDPG, as well as other state-of-the-art methods, across all tested
+sparse-reward continuous environments. Ablation studies further highlight how
+each strategy individually enhances the performance of DDPG in this setting.","['Ehsan Futuhi', 'Shayan Karimi', 'Chao Gao', 'Martin Müller']","['cs.LG', 'cs.RO', 'stat.ML']",2024-10-07 17:31:52+00:00
+http://arxiv.org/abs/2410.05218v2,Density estimation with LLMs: a geometric investigation of in-context learning trajectories,"Large language models (LLMs) demonstrate remarkable emergent abilities to
+perform in-context learning across various tasks, including time series
+forecasting. This work investigates LLMs' ability to estimate probability
+density functions (PDFs) from data observed in-context; such density estimation
+(DE) is a fundamental task underlying many probabilistic modeling problems. We
+leverage the Intensive Principal Component Analysis (InPCA) to visualize and
+analyze the in-context learning dynamics of LLaMA-2 models. Our main finding is
+that these LLMs all follow similar learning trajectories in a low-dimensional
+InPCA space, which are distinct from those of traditional density estimation
+methods like histograms and Gaussian kernel density estimation (KDE). We
+interpret the LLaMA in-context DE process as a KDE with an adaptive kernel
+width and shape. This custom kernel model captures a significant portion of
+LLaMA's behavior despite having only two parameters. We further speculate on
+why LLaMA's kernel width and shape differs from classical algorithms, providing
+insights into the mechanism of in-context probabilistic reasoning in LLMs.","['Toni J. B. Liu', 'Nicolas Boullé', 'Raphaël Sarfati', 'Christopher J. Earls']","['cs.LG', 'cs.CL', 'stat.ML']",2024-10-07 17:22:56+00:00
+http://arxiv.org/abs/2410.05211v1,The Informed Elastic Net for Fast Grouped Variable Selection and FDR Control in Genomics Research,"Modern genomics research relies on genome-wide association studies (GWAS) to
+identify the few genetic variants among potentially millions that are
+associated with diseases of interest. Only reproducible discoveries of groups
+of associations improve our understanding of complex polygenic diseases and
+enable the development of new drugs and personalized medicine. Thus, fast
+multivariate variable selection methods that have a high true positive rate
+(TPR) while controlling the false discovery rate (FDR) are crucial. Recently,
+the T-Rex+GVS selector, a version of the T-Rex selector that uses the elastic
+net (EN) as a base selector to perform grouped variable election, was proposed.
+Although it significantly increased the TPR in simulated GWAS compared to the
+original T-Rex, its comparably high computational cost limits scalability.
+Therefore, we propose the informed elastic net (IEN), a new base selector that
+significantly reduces computation time while retaining the grouped variable
+selection property. We quantify its grouping effect and derive its formulation
+as a Lasso-type optimization problem, which is solved efficiently within the
+T-Rex framework by the terminated LARS algorithm. Numerical simulations and a
+GWAS study demonstrate that the proposed T-Rex+GVS (IEN) exhibits the desired
+grouping effect, reduces computation time, and achieves the same TPR as
+T-Rex+GVS (EN) but with lower FDR, which makes it a promising method for
+large-scale GWAS.","['Jasin Machkour', 'Michael Muma', 'Daniel P. Palomar']","['stat.ME', 'stat.ML']",2024-10-07 17:18:25+00:00
